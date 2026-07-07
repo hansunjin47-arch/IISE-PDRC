@@ -1,0 +1,36 @@
+# Proprietary algorithm code
+코드 공유/
+*.zip
+
+# Output files
+outputs/
+log_*.txt
+
+# Local dev/test scaffold (not part of the published benchmark suite)
+/test/
+
+# Per-instance internal algorithm parameter tuning (placement/routing config).
+# Not part of the published benchmark - only input_*.yaml, summary.json, and
+# result files for each instance are meant to be public.
+internal_params/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

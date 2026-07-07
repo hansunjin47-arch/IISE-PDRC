@@ -1,0 +1,24 @@
+{
+  "feasible": false,
+  "total_violations": 1,
+  "placement": {
+    "feasible": true,
+    "total_violations": 0,
+    "by_category": {}
+  },
+  "routing": {
+    "feasible": false,
+    "total_violations": 1,
+    "by_category": {
+      "group_deviation": {
+        "check": "group length deviation",
+        "count": 1,
+        "violations": [
+          {
+            "description": "G1: (max - min) / min = 0.3206 (limit = 0.1500). max = 1330.04, min = 1007.16  [200 nets]."
+          }
+        ]
+      }
+    }
+  }
+}

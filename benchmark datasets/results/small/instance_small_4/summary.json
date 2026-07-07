@@ -1,0 +1,14 @@
+{
+  "feasible": true,
+  "total_violations": 0,
+  "placement": {
+    "feasible": true,
+    "total_violations": 0,
+    "by_category": {}
+  },
+  "routing": {
+    "feasible": true,
+    "total_violations": 0,
+    "by_category": {}
+  }
+}

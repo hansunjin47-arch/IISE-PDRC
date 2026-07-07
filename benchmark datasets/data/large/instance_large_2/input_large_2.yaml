@@ -1,0 +1,101 @@
+# input_high.yaml
+#
+# Configuration file for the micro placement generator (generator.py).
+# "High" difficulty tier: 5 signal groups, matching the original SK Hynix
+# real-chip dataset's group sizes (base_die_bump_250306.csv group counts).
+# All coordinate and size values are in grid units unless noted otherwise.
+#
+# Usage:
+#   python generator.py -c input_high.yaml
+
+schema_version: 1
+
+generator:
+  seed: 2               # random seed for reproducibility
+  g_x: 96               # g_x: minimum horizontal gap between micro bump clusters (μm)
+  g_y: 192              # g_y: minimum vertical gap between micro bump clusters (μm)
+
+# Optimization objectives passed through to the problem formulation.
+# Supported values: "routing_length (minimization)", "num_bends (minimization)"
+objectives:
+  - "routing_length (minimization)"
+  - "num_bends (minimization)"
+
+layout:                 # boundary of the full layout area (grid units), origin fixed at (0, 0)
+  L: 4                  # L: number of routing layers
+  W: 10000               # W: layout width
+  H: 10000               # H: layout height
+
+spec:                   # physical dimensions of components (grid units)
+  delta: 4              # ?: unit grid size (= wire width)
+  d_micro: 24           # d_micro: micro bump diameter
+  d_C4: 40              # d_C4: C4 bump diameter
+  d_via: 8              # d_via: via diameter
+
+  # sc_i: bump-to-bump center-to-center spacing (grid units)
+  sc:
+    micro: 48           # sc_micro: micro bump pitch (used as the placement grid pitch)
+    C4: 152             # sc_C4: C4 bump pitch (used for the candidate grid)
+
+  # sc_{via,i}: via-to-component center-to-center spacing (grid units)
+  # Formula: (d_via + d_i) / 2 + delta
+  sc_via:
+    micro: 20   # (8+24)/2 + 4
+    C4: 28      # (8+40)/2 + 4
+    via: 12     # (8+8)/2  + 4
+
+  # sc_{wire,i}: wire-to-component center-to-center spacing (grid units)
+  # Formula: d_i / 2 + (3/2) * delta
+  sc_wire:
+    micro: 18   # 24/2 + 6
+    C4: 26      # 40/2 + 6
+    via: 10     # 8/2  + 6
+    wire: 8     # 4/2  + 6
+
+# Number of nets per group (G1-G{K}).
+# Group sizes from the original real-chip dataset (base_die_bump_250306.csv),
+# after excluding differential pairs (excluded_signals, 10 nets, all group2)
+# and 1:N duplicate-netname rows (39 in group2, 7 in group4, 2 in group5) -
+# i.e. the counts that actually reached placement/routing, matching the
+# paper's Table V Case 1: G1=172, G2=682, G3=5, G4=41, G5=2 (raw: 172/731/5/48/4).
+signal:
+  N: 902                  # N: total number of nets (172+682+5+41+2)
+  K: 3                   # K: number of groups (high tier)
+  G1: 150
+  G2: 602
+  G3: 150
+  # Cluster size triangular distribution bounds (as fractions of total N).
+  c_min: 0.025
+  c_max: 0.05
+
+placement:
+  q: 3                  # q: side length of the C4 bump density-check window (in C4 pitches)
+  p: 6                  # p: maximum number of C4 bumps allowed within any q×q window
+  # phi: dummy bump density on the ML layer (fraction of non-micro-bump grid
+  # positions that get a dummy bump / obstacle). 1.0 = every empty position is
+  # a dummy bump (original behavior, max masking). 0.0 = no dummy bumps at all.
+  phi: 1.0
+
+routing:
+  # rho_L: maximum allowed fraction of total routing length on each layer.
+  # Constraint: layer_length / total_length <= rho. Set to null (~) for unconstrained
+  # (0.0 is now a real constraint meaning "this layer must carry ~0% of the length").
+  # Wired into placement: rho_M1 -> L1_max, rho_M3 -> L3_max (see placement/main.py).
+  # M2/M4 currently have no analogous cap in the placement code, so they remain
+  # validator-only checks.
+  rho:
+    M1: 0.2
+    M2: null
+    M3: null
+    M4: null
+
+  # sigma_k: allowed routing-length deviation per group (as a fraction of the mean).
+  # Wired into placement (skew_ratio_gN = 1 + sigma_gN) and routing (cri_dist1
+  # multiplier = 1 + sigma_gN). Set to null (~) for "no deviation constraint".
+  sigma:
+    G1: 0.15
+    G2: null
+    G3: null
+
+output:
+  dir: benchmark datasets/data/large/instance_large_2

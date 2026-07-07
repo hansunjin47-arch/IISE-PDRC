@@ -1,0 +1,1689 @@
+{
+  "feasible": false,
+  "total_violations": 556,
+  "placement": {
+    "feasible": false,
+    "total_violations": 556,
+    "by_category": {
+      "micro_match": {
+        "check": "micro coordinate & net completeness",
+        "count": 556,
+        "violations": [
+          {
+            "description": "[G1_0001] micro coordinate mismatch: routing has (624, 3456), micro_coordinate.csv has (1296, 3600)."
+          },
+          {
+            "description": "[G1_0002] micro coordinate mismatch: routing has (720, 3456), micro_coordinate.csv has (1392, 3600)."
+          },
+          {
+            "description": "[G1_0003] micro coordinate mismatch: routing has (816, 3456), micro_coordinate.csv has (1344, 3648)."
+          },
+          {
+            "description": "[G1_0004] micro coordinate mismatch: routing has (576, 3504), micro_coordinate.csv has (1296, 3696)."
+          },
+          {
+            "description": "[G1_0005] micro coordinate mismatch: routing has (672, 3504), micro_coordinate.csv has (1392, 3696)."
+          },
+          {
+            "description": "[G1_0006] micro coordinate mismatch: routing has (768, 3504), micro_coordinate.csv has (1344, 3744)."
+          },
+          {
+            "description": "[G1_0007] micro coordinate mismatch: routing has (864, 3504), micro_coordinate.csv has (1296, 3792)."
+          },
+          {
+            "description": "[G1_0008] micro coordinate mismatch: routing has (624, 3552), micro_coordinate.csv has (1392, 3792)."
+          },
+          {
+            "description": "[G1_0009] micro coordinate mismatch: routing has (720, 3552), micro_coordinate.csv has (1344, 3840)."
+          },
+          {
+            "description": "[G1_0010] micro coordinate mismatch: routing has (816, 3552), micro_coordinate.csv has (1296, 3888)."
+          },
+          {
+            "description": "[G1_0011] micro coordinate mismatch: routing has (576, 3600), micro_coordinate.csv has (1392, 3888)."
+          },
+          {
+            "description": "[G1_0012] micro coordinate mismatch: routing has (672, 3600), micro_coordinate.csv has (1344, 3936)."
+          },
+          {
+            "description": "[G1_0013] micro coordinate mismatch: routing has (768, 3600), micro_coordinate.csv has (1296, 3984)."
+          },
+          {
+            "description": "[G1_0014] micro coordinate mismatch: routing has (864, 3600), micro_coordinate.csv has (1392, 3984)."
+          },
+          {
+            "description": "[G1_0015] micro coordinate mismatch: routing has (624, 3648), micro_coordinate.csv has (1344, 4032)."
+          },
+          {
+            "description": "[G1_0016] micro coordinate mismatch: routing has (720, 3648), micro_coordinate.csv has (1296, 4080)."
+          },
+          {
+            "description": "[G1_0017] micro coordinate mismatch: routing has (816, 3648), micro_coordinate.csv has (1392, 4080)."
+          },
+          {
+            "description": "[G1_0018] micro coordinate mismatch: routing has (576, 3696), micro_coordinate.csv has (1344, 4128)."
+          },
+          {
+            "description": "[G1_0019] micro coordinate mismatch: routing has (672, 3696), micro_coordinate.csv has (1296, 4176)."
+          },
+          {
+            "description": "[G1_0020] micro coordinate mismatch: routing has (768, 3696), micro_coordinate.csv has (1392, 4176)."
+          },
+          {
+            "description": "[G1_0021] micro coordinate mismatch: routing has (864, 3696), micro_coordinate.csv has (1344, 4224)."
+          },
+          {
+            "description": "[G1_0022] micro coordinate mismatch: routing has (576, 2352), micro_coordinate.csv has (1296, 2784)."
+          },
+          {
+            "description": "[G1_0023] micro coordinate mismatch: routing has (672, 2352), micro_coordinate.csv has (1392, 2784)."
+          },
+          {
+            "description": "[G1_0024] micro coordinate mismatch: routing has (768, 2352), micro_coordinate.csv has (1344, 2832)."
+          },
+          {
+            "description": "[G1_0025] micro coordinate mismatch: routing has (864, 2352), micro_coordinate.csv has (1296, 2880)."
+          },
+          {
+            "description": "[G1_0026] micro coordinate mismatch: routing has (624, 2400), micro_coordinate.csv has (1392, 2880)."
+          },
+          {
+            "description": "[G1_0027] micro coordinate mismatch: routing has (720, 2400), micro_coordinate.csv has (1344, 2928)."
+          },
+          {
+            "description": "[G1_0028] micro coordinate mismatch: routing has (816, 2400), micro_coordinate.csv has (1296, 2976)."
+          },
+          {
+            "description": "[G3_0001] micro coordinate mismatch: routing has (624, 1152), micro_coordinate.csv has (672, 960)."
+          },
+          {
+            "description": "[G3_0002] micro coordinate mismatch: routing has (720, 1152), micro_coordinate.csv has (768, 960)."
+          },
+          {
+            "description": "[G3_0003] micro coordinate mismatch: routing has (816, 1152), micro_coordinate.csv has (864, 960)."
+          },
+          {
+            "description": "[G3_0004] micro coordinate mismatch: routing has (576, 1200), micro_coordinate.csv has (624, 1008)."
+          },
+          {
+            "description": "[G3_0005] micro coordinate mismatch: routing has (672, 1200), micro_coordinate.csv has (720, 1008)."
+          },
+          {
+            "description": "[G3_0006] micro coordinate mismatch: routing has (768, 1200), micro_coordinate.csv has (816, 1008)."
+          },
+          {
+            "description": "[G3_0007] micro coordinate mismatch: routing has (864, 1200), micro_coordinate.csv has (912, 1008)."
+          },
+          {
+            "description": "[G3_0008] micro coordinate mismatch: routing has (624, 1248), micro_coordinate.csv has (672, 1056)."
+          },
+          {
+            "description": "[G3_0009] micro coordinate mismatch: routing has (720, 1248), micro_coordinate.csv has (768, 1056)."
+          },
+          {
+            "description": "[G3_0010] micro coordinate mismatch: routing has (816, 1248), micro_coordinate.csv has (864, 1056)."
+          },
+          {
+            "description": "[G3_0011] micro coordinate mismatch: routing has (576, 1296), micro_coordinate.csv has (624, 1104)."
+          },
+          {
+            "description": "[G3_0012] micro coordinate mismatch: routing has (672, 1296), micro_coordinate.csv has (720, 1104)."
+          },
+          {
+            "description": "[G3_0013] micro coordinate mismatch: routing has (768, 1296), micro_coordinate.csv has (816, 1104)."
+          },
+          {
+            "description": "[G3_0014] micro coordinate mismatch: routing has (864, 1296), micro_coordinate.csv has (912, 1104)."
+          },
+          {
+            "description": "[G3_0015] micro coordinate mismatch: routing has (624, 1344), micro_coordinate.csv has (672, 1152)."
+          },
+          {
+            "description": "[G2_0001] micro coordinate mismatch: routing has (1104, 3600), micro_coordinate.csv has (2352, 3648)."
+          },
+          {
+            "description": "[G2_0002] micro coordinate mismatch: routing has (1200, 3600), micro_coordinate.csv has (2448, 3648)."
+          },
+          {
+            "description": "[G2_0003] micro coordinate mismatch: routing has (1296, 3600), micro_coordinate.csv has (2544, 3648)."
+          },
+          {
+            "description": "[G2_0004] micro coordinate mismatch: routing has (1056, 3648), micro_coordinate.csv has (2304, 3696)."
+          },
+          {
+            "description": "[G2_0005] micro coordinate mismatch: routing has (1152, 3648), micro_coordinate.csv has (2400, 3696)."
+          },
+          {
+            "description": "[G2_0006] micro coordinate mismatch: routing has (1248, 3648), micro_coordinate.csv has (2496, 3696)."
+          },
+          {
+            "description": "[G2_0007] micro coordinate mismatch: routing has (1344, 3648), micro_coordinate.csv has (2592, 3696)."
+          },
+          {
+            "description": "[G2_0008] micro coordinate mismatch: routing has (1104, 3696), micro_coordinate.csv has (2352, 3744)."
+          },
+          {
+            "description": "[G2_0009] micro coordinate mismatch: routing has (1200, 3696), micro_coordinate.csv has (2448, 3744)."
+          },
+          {
+            "description": "[G2_0010] micro coordinate mismatch: routing has (1296, 3696), micro_coordinate.csv has (2544, 3744)."
+          },
+          {
+            "description": "[G2_0011] micro coordinate mismatch: routing has (1056, 3744), micro_coordinate.csv has (2304, 3792)."
+          },
+          {
+            "description": "[G2_0012] micro coordinate mismatch: routing has (1152, 3744), micro_coordinate.csv has (2400, 3792)."
+          },
+          {
+            "description": "[G2_0013] micro coordinate mismatch: routing has (1248, 3744), micro_coordinate.csv has (2496, 3792)."
+          },
+          {
+            "description": "[G2_0014] micro coordinate mismatch: routing has (1344, 3744), micro_coordinate.csv has (2592, 3792)."
+          },
+          {
+            "description": "[G2_0015] micro coordinate mismatch: routing has (1104, 3792), micro_coordinate.csv has (2352, 3840)."
+          },
+          {
+            "description": "[G2_0016] micro coordinate mismatch: routing has (1200, 3792), micro_coordinate.csv has (2448, 3840)."
+          },
+          {
+            "description": "[G2_0017] micro coordinate mismatch: routing has (1296, 3792), micro_coordinate.csv has (2544, 3840)."
+          },
+          {
+            "description": "[G2_0018] micro coordinate mismatch: routing has (1056, 3840), micro_coordinate.csv has (2304, 3888)."
+          },
+          {
+            "description": "[G2_0019] micro coordinate mismatch: routing has (1152, 3840), micro_coordinate.csv has (2400, 3888)."
+          },
+          {
+            "description": "[G2_0020] micro coordinate mismatch: routing has (1152, 2064), micro_coordinate.csv has (768, 2112)."
+          },
+          {
+            "description": "[G2_0021] micro coordinate mismatch: routing has (1248, 2064), micro_coordinate.csv has (864, 2112)."
+          },
+          {
+            "description": "[G2_0022] micro coordinate mismatch: routing has (1200, 2112), micro_coordinate.csv has (720, 2160)."
+          },
+          {
+            "description": "[G2_0023] micro coordinate mismatch: routing has (1152, 2160), micro_coordinate.csv has (816, 2160)."
+          },
+          {
+            "description": "[G2_0024] micro coordinate mismatch: routing has (1248, 2160), micro_coordinate.csv has (912, 2160)."
+          },
+          {
+            "description": "[G2_0025] micro coordinate mismatch: routing has (1200, 2208), micro_coordinate.csv has (768, 2208)."
+          },
+          {
+            "description": "[G2_0026] micro coordinate mismatch: routing has (1152, 2256), micro_coordinate.csv has (864, 2208)."
+          },
+          {
+            "description": "[G2_0027] micro coordinate mismatch: routing has (1248, 2256), micro_coordinate.csv has (720, 2256)."
+          },
+          {
+            "description": "[G2_0028] micro coordinate mismatch: routing has (1200, 2304), micro_coordinate.csv has (816, 2256)."
+          },
+          {
+            "description": "[G2_0029] micro coordinate mismatch: routing has (1152, 2352), micro_coordinate.csv has (912, 2256)."
+          },
+          {
+            "description": "[G2_0030] micro coordinate mismatch: routing has (1248, 2352), micro_coordinate.csv has (768, 2304)."
+          },
+          {
+            "description": "[G2_0031] micro coordinate mismatch: routing has (1200, 2400), micro_coordinate.csv has (864, 2304)."
+          },
+          {
+            "description": "[G2_0032] micro coordinate mismatch: routing has (1152, 2448), micro_coordinate.csv has (720, 2352)."
+          },
+          {
+            "description": "[G2_0033] micro coordinate mismatch: routing has (1248, 2448), micro_coordinate.csv has (1344, 1440)."
+          },
+          {
+            "description": "[G2_0034] micro coordinate mismatch: routing has (1200, 2496), micro_coordinate.csv has (1296, 1488)."
+          },
+          {
+            "description": "[G2_0035] micro coordinate mismatch: routing has (1152, 2544), micro_coordinate.csv has (1392, 1488)."
+          },
+          {
+            "description": "[G2_0036] micro coordinate mismatch: routing has (1248, 2544), micro_coordinate.csv has (1344, 1536)."
+          },
+          {
+            "description": "[G2_0037] micro coordinate mismatch: routing has (1200, 2592), micro_coordinate.csv has (1296, 1584)."
+          },
+          {
+            "description": "[G2_0038] micro coordinate mismatch: routing has (1200, 1056), micro_coordinate.csv has (1392, 1584)."
+          },
+          {
+            "description": "[G2_0039] micro coordinate mismatch: routing has (1296, 1056), micro_coordinate.csv has (1344, 1632)."
+          },
+          {
+            "description": "[G2_0040] micro coordinate mismatch: routing has (1152, 1104), micro_coordinate.csv has (1296, 1680)."
+          },
+          {
+            "description": "[G2_0041] micro coordinate mismatch: routing has (1248, 1104), micro_coordinate.csv has (1392, 1680)."
+          },
+          {
+            "description": "[G2_0042] micro coordinate mismatch: routing has (1344, 1104), micro_coordinate.csv has (1344, 1728)."
+          },
+          {
+            "description": "[G2_0043] micro coordinate mismatch: routing has (1200, 1152), micro_coordinate.csv has (1296, 1776)."
+          },
+          {
+            "description": "[G2_0044] micro coordinate mismatch: routing has (1296, 1152), micro_coordinate.csv has (1392, 1776)."
+          },
+          {
+            "description": "[G2_0045] micro coordinate mismatch: routing has (1536, 2976), micro_coordinate.csv has (1344, 1824)."
+          },
+          {
+            "description": "[G2_0046] micro coordinate mismatch: routing has (1488, 3024), micro_coordinate.csv has (1296, 1872)."
+          },
+          {
+            "description": "[G2_0047] micro coordinate mismatch: routing has (1584, 3024), micro_coordinate.csv has (1392, 1872)."
+          },
+          {
+            "description": "[G2_0048] micro coordinate mismatch: routing has (1536, 3072), micro_coordinate.csv has (1344, 1920)."
+          },
+          {
+            "description": "[G2_0049] micro coordinate mismatch: routing has (1488, 3120), micro_coordinate.csv has (1296, 1968)."
+          },
+          {
+            "description": "[G2_0050] micro coordinate mismatch: routing has (1584, 3120), micro_coordinate.csv has (1392, 1968)."
+          },
+          {
+            "description": "[G2_0051] micro coordinate mismatch: routing has (1536, 3168), micro_coordinate.csv has (1344, 2016)."
+          },
+          {
+            "description": "[G2_0052] micro coordinate mismatch: routing has (1488, 3216), micro_coordinate.csv has (1296, 2064)."
+          },
+          {
+            "description": "[G2_0053] micro coordinate mismatch: routing has (1584, 3216), micro_coordinate.csv has (1392, 2064)."
+          },
+          {
+            "description": "[G2_0054] micro coordinate mismatch: routing has (1536, 3264), micro_coordinate.csv has (1344, 2112)."
+          },
+          {
+            "description": "[G2_0055] micro coordinate mismatch: routing has (1488, 3312), micro_coordinate.csv has (1248, 576)."
+          },
+          {
+            "description": "[G2_0056] micro coordinate mismatch: routing has (1584, 3312), micro_coordinate.csv has (1344, 576)."
+          },
+          {
+            "description": "[G2_0057] micro coordinate mismatch: routing has (1536, 3360), micro_coordinate.csv has (1200, 624)."
+          },
+          {
+            "description": "[G2_0058] micro coordinate mismatch: routing has (1488, 3408), micro_coordinate.csv has (1296, 624)."
+          },
+          {
+            "description": "[G2_0059] micro coordinate mismatch: routing has (1584, 3408), micro_coordinate.csv has (1392, 624)."
+          },
+          {
+            "description": "[G2_0060] micro coordinate mismatch: routing has (1536, 3456), micro_coordinate.csv has (1248, 672)."
+          },
+          {
+            "description": "[G2_0061] micro coordinate mismatch: routing has (1488, 3504), micro_coordinate.csv has (1344, 672)."
+          },
+          {
+            "description": "[G2_0062] micro coordinate mismatch: routing has (1584, 3504), micro_coordinate.csv has (1200, 720)."
+          },
+          {
+            "description": "[G2_0063] micro coordinate mismatch: routing has (1536, 3552), micro_coordinate.csv has (1296, 720)."
+          },
+          {
+            "description": "[G2_0064] micro coordinate mismatch: routing has (1584, 1296), micro_coordinate.csv has (1392, 720)."
+          },
+          {
+            "description": "[G2_0065] micro coordinate mismatch: routing has (1680, 1296), micro_coordinate.csv has (1248, 768)."
+          },
+          {
+            "description": "[G2_0066] micro coordinate mismatch: routing has (1632, 1344), micro_coordinate.csv has (1344, 768)."
+          },
+          {
+            "description": "[G2_0067] micro coordinate mismatch: routing has (1584, 1392), micro_coordinate.csv has (1200, 816)."
+          },
+          {
+            "description": "[G2_0068] micro coordinate mismatch: routing has (1680, 1392), micro_coordinate.csv has (1296, 816)."
+          },
+          {
+            "description": "[G2_0069] micro coordinate mismatch: routing has (1632, 1440), micro_coordinate.csv has (1392, 816)."
+          },
+          {
+            "description": "[G2_0070] micro coordinate mismatch: routing has (1584, 1488), micro_coordinate.csv has (1776, 3696)."
+          },
+          {
+            "description": "[G2_0071] micro coordinate mismatch: routing has (1680, 1488), micro_coordinate.csv has (1872, 3696)."
+          },
+          {
+            "description": "[G2_0072] micro coordinate mismatch: routing has (1632, 1536), micro_coordinate.csv has (1968, 3696)."
+          },
+          {
+            "description": "[G2_0073] micro coordinate mismatch: routing has (1584, 1584), micro_coordinate.csv has (2064, 3696)."
+          },
+          {
+            "description": "[G2_0074] micro coordinate mismatch: routing has (1680, 1584), micro_coordinate.csv has (1824, 3744)."
+          },
+          {
+            "description": "[G2_0075] micro coordinate mismatch: routing has (1632, 1632), micro_coordinate.csv has (1920, 3744)."
+          },
+          {
+            "description": "[G2_0076] micro coordinate mismatch: routing has (1584, 1680), micro_coordinate.csv has (2016, 3744)."
+          },
+          {
+            "description": "[G2_0077] micro coordinate mismatch: routing has (1680, 1680), micro_coordinate.csv has (1776, 3792)."
+          },
+          {
+            "description": "[G2_0078] micro coordinate mismatch: routing has (2064, 3552), micro_coordinate.csv has (1872, 3792)."
+          },
+          {
+            "description": "[G2_0079] micro coordinate mismatch: routing has (2160, 3552), micro_coordinate.csv has (1968, 3792)."
+          },
+          {
+            "description": "[G2_0080] micro coordinate mismatch: routing has (2016, 3600), micro_coordinate.csv has (2064, 3792)."
+          },
+          {
+            "description": "[G2_0081] micro coordinate mismatch: routing has (2112, 3600), micro_coordinate.csv has (1824, 3840)."
+          },
+          {
+            "description": "[G2_0082] micro coordinate mismatch: routing has (2208, 3600), micro_coordinate.csv has (1920, 3840)."
+          },
+          {
+            "description": "[G2_0083] micro coordinate mismatch: routing has (2064, 3648), micro_coordinate.csv has (2016, 3840)."
+          },
+          {
+            "description": "[G2_0084] micro coordinate mismatch: routing has (2160, 3648), micro_coordinate.csv has (1776, 3888)."
+          },
+          {
+            "description": "[G2_0085] micro coordinate mismatch: routing has (2016, 3696), micro_coordinate.csv has (1872, 3888)."
+          },
+          {
+            "description": "[G2_0086] micro coordinate mismatch: routing has (2112, 3696), micro_coordinate.csv has (1968, 3888)."
+          },
+          {
+            "description": "[G2_0087] micro coordinate mismatch: routing has (2208, 3696), micro_coordinate.csv has (2064, 3888)."
+          },
+          {
+            "description": "[G2_0088] micro coordinate mismatch: routing has (2064, 3744), micro_coordinate.csv has (1824, 3936)."
+          },
+          {
+            "description": "[G2_0089] micro coordinate mismatch: routing has (2160, 3744), micro_coordinate.csv has (1920, 2400)."
+          },
+          {
+            "description": "[G2_0090] micro coordinate mismatch: routing has (2016, 3792), micro_coordinate.csv has (2016, 2400)."
+          },
+          {
+            "description": "[G2_0091] micro coordinate mismatch: routing has (2112, 3792), micro_coordinate.csv has (1872, 2448)."
+          },
+          {
+            "description": "[G2_0092] micro coordinate mismatch: routing has (2208, 3792), micro_coordinate.csv has (1968, 2448)."
+          },
+          {
+            "description": "[G2_0093] micro coordinate mismatch: routing has (2064, 3840), micro_coordinate.csv has (2064, 2448)."
+          },
+          {
+            "description": "[G2_0094] micro coordinate mismatch: routing has (2160, 3840), micro_coordinate.csv has (1920, 2496)."
+          },
+          {
+            "description": "[G2_0095] micro coordinate mismatch: routing has (2016, 3888), micro_coordinate.csv has (2016, 2496)."
+          },
+          {
+            "description": "[G2_0096] micro coordinate mismatch: routing has (2064, 2352), micro_coordinate.csv has (1872, 2544)."
+          },
+          {
+            "description": "[G2_0097] micro coordinate mismatch: routing has (2160, 2352), micro_coordinate.csv has (1968, 2544)."
+          },
+          {
+            "description": "[G2_0098] micro coordinate mismatch: routing has (2016, 2400), micro_coordinate.csv has (2064, 2544)."
+          },
+          {
+            "description": "[G2_0099] micro coordinate mismatch: routing has (2112, 2400), micro_coordinate.csv has (1920, 2592)."
+          },
+          {
+            "description": "[G2_0100] micro coordinate mismatch: routing has (2208, 2400), micro_coordinate.csv has (2016, 2592)."
+          },
+          {
+            "description": "[G2_0101] micro coordinate mismatch: routing has (2064, 2448), micro_coordinate.csv has (1872, 2640)."
+          },
+          {
+            "description": "[G2_0102] micro coordinate mismatch: routing has (2160, 2448), micro_coordinate.csv has (1968, 2640)."
+          },
+          {
+            "description": "[G2_0103] micro coordinate mismatch: routing has (2016, 2496), micro_coordinate.csv has (2064, 2640)."
+          },
+          {
+            "description": "[G2_0104] micro coordinate mismatch: routing has (2112, 2496), micro_coordinate.csv has (1920, 2688)."
+          },
+          {
+            "description": "[G2_0105] micro coordinate mismatch: routing has (2208, 2496), micro_coordinate.csv has (2016, 2688)."
+          },
+          {
+            "description": "[G2_0106] micro coordinate mismatch: routing has (2064, 2544), micro_coordinate.csv has (1872, 2736)."
+          },
+          {
+            "description": "[G2_0107] micro coordinate mismatch: routing has (2160, 2544), micro_coordinate.csv has (1920, 960)."
+          },
+          {
+            "description": "[G2_0108] micro coordinate mismatch: routing has (2016, 2592), micro_coordinate.csv has (1872, 1008)."
+          },
+          {
+            "description": "[G2_0109] micro coordinate mismatch: routing has (2112, 2592), micro_coordinate.csv has (1968, 1008)."
+          },
+          {
+            "description": "[G2_0110] micro coordinate mismatch: routing has (2208, 2592), micro_coordinate.csv has (1920, 1056)."
+          },
+          {
+            "description": "[G2_0111] micro coordinate mismatch: routing has (2064, 2640), micro_coordinate.csv has (1872, 1104)."
+          },
+          {
+            "description": "[G2_0112] micro coordinate mismatch: routing has (2160, 2640), micro_coordinate.csv has (1968, 1104)."
+          },
+          {
+            "description": "[G2_0113] micro coordinate mismatch: routing has (2064, 1056), micro_coordinate.csv has (1920, 1152)."
+          },
+          {
+            "description": "[G2_0114] micro coordinate mismatch: routing has (2016, 1104), micro_coordinate.csv has (1872, 1200)."
+          },
+          {
+            "description": "[G2_0115] micro coordinate mismatch: routing has (2112, 1104), micro_coordinate.csv has (1968, 1200)."
+          },
+          {
+            "description": "[G2_0116] micro coordinate mismatch: routing has (2064, 1152), micro_coordinate.csv has (1920, 1248)."
+          },
+          {
+            "description": "[G2_0117] micro coordinate mismatch: routing has (2016, 1200), micro_coordinate.csv has (1872, 1296)."
+          },
+          {
+            "description": "[G2_0118] micro coordinate mismatch: routing has (2112, 1200), micro_coordinate.csv has (1968, 1296)."
+          },
+          {
+            "description": "[G2_0119] micro coordinate mismatch: routing has (2064, 1248), micro_coordinate.csv has (1920, 1344)."
+          },
+          {
+            "description": "[G2_0120] micro coordinate mismatch: routing has (2016, 1296), micro_coordinate.csv has (1872, 1392)."
+          },
+          {
+            "description": "[G2_0121] micro coordinate mismatch: routing has (2112, 1296), micro_coordinate.csv has (768, 3312)."
+          },
+          {
+            "description": "[G2_0122] micro coordinate mismatch: routing has (2064, 1344), micro_coordinate.csv has (720, 3360)."
+          },
+          {
+            "description": "[G2_0123] micro coordinate mismatch: routing has (2016, 1392), micro_coordinate.csv has (816, 3360)."
+          },
+          {
+            "description": "[G2_0124] micro coordinate mismatch: routing has (2112, 1392), micro_coordinate.csv has (768, 3408)."
+          },
+          {
+            "description": "[G2_0125] micro coordinate mismatch: routing has (2064, 1440), micro_coordinate.csv has (720, 3456)."
+          },
+          {
+            "description": "[G2_0126] micro coordinate mismatch: routing has (2544, 3312), micro_coordinate.csv has (816, 3456)."
+          },
+          {
+            "description": "[G2_0127] micro coordinate mismatch: routing has (2640, 3312), micro_coordinate.csv has (768, 3504)."
+          },
+          {
+            "description": "[G2_0128] micro coordinate mismatch: routing has (2592, 3360), micro_coordinate.csv has (720, 3552)."
+          },
+          {
+            "description": "[G2_0129] micro coordinate mismatch: routing has (2544, 3408), micro_coordinate.csv has (816, 3552)."
+          },
+          {
+            "description": "[G2_0130] micro coordinate mismatch: routing has (2640, 3408), micro_coordinate.csv has (768, 3600)."
+          },
+          {
+            "description": "[G2_0131] micro coordinate mismatch: routing has (2592, 3456), micro_coordinate.csv has (720, 3648)."
+          },
+          {
+            "description": "[G2_0132] micro coordinate mismatch: routing has (2544, 3504), micro_coordinate.csv has (816, 3648)."
+          },
+          {
+            "description": "[G2_0133] micro coordinate mismatch: routing has (2640, 3504), micro_coordinate.csv has (768, 3696)."
+          },
+          {
+            "description": "[G2_0134] micro coordinate mismatch: routing has (2592, 3552), micro_coordinate.csv has (720, 3744)."
+          },
+          {
+            "description": "[G2_0135] micro coordinate mismatch: routing has (2544, 3600), micro_coordinate.csv has (816, 3744)."
+          },
+          {
+            "description": "[G2_0136] micro coordinate mismatch: routing has (2640, 3600), micro_coordinate.csv has (768, 3792)."
+          },
+          {
+            "description": "[G2_0137] micro coordinate mismatch: routing has (2592, 3648), micro_coordinate.csv has (720, 3840)."
+          },
+          {
+            "description": "[G2_0138] micro coordinate mismatch: routing has (2544, 3696), micro_coordinate.csv has (816, 3840)."
+          },
+          {
+            "description": "[G2_0139] micro coordinate mismatch: routing has (2640, 3696), micro_coordinate.csv has (768, 3888)."
+          },
+          {
+            "description": "[G2_0140] micro coordinate mismatch: routing has (2592, 3744), micro_coordinate.csv has (2400, 2304)."
+          },
+          {
+            "description": "[G2_0141] micro coordinate mismatch: routing has (2544, 3792), micro_coordinate.csv has (2496, 2304)."
+          },
+          {
+            "description": "[G2_0142] micro coordinate mismatch: routing has (2640, 3792), micro_coordinate.csv has (2592, 2304)."
+          },
+          {
+            "description": "[G2_0143] micro coordinate mismatch: routing has (2592, 3840), micro_coordinate.csv has (2448, 2352)."
+          },
+          {
+            "description": "[G2_0144] micro coordinate mismatch: routing has (2400, 2256), micro_coordinate.csv has (2544, 2352)."
+          },
+          {
+            "description": "[G2_0145] micro coordinate mismatch: routing has (2496, 2256), micro_coordinate.csv has (2400, 2400)."
+          },
+          {
+            "description": "[G2_0146] micro coordinate mismatch: routing has (2592, 2256), micro_coordinate.csv has (2496, 2400)."
+          },
+          {
+            "description": "[G2_0147] micro coordinate mismatch: routing has (2352, 2304), micro_coordinate.csv has (2592, 2400)."
+          },
+          {
+            "description": "[G2_0148] micro coordinate mismatch: routing has (2448, 2304), micro_coordinate.csv has (2448, 2448)."
+          },
+          {
+            "description": "[G2_0149] micro coordinate mismatch: routing has (2544, 2304), micro_coordinate.csv has (2544, 2448)."
+          },
+          {
+            "description": "[G2_0150] micro coordinate mismatch: routing has (2640, 2304), micro_coordinate.csv has (2400, 2496)."
+          },
+          {
+            "description": "[G2_0151] micro coordinate mismatch: routing has (2400, 2352), micro_coordinate.csv has (2496, 2496)."
+          },
+          {
+            "description": "[G2_0152] micro coordinate mismatch: routing has (2496, 2352), micro_coordinate.csv has (2592, 2496)."
+          },
+          {
+            "description": "[G2_0153] micro coordinate mismatch: routing has (2592, 2352), micro_coordinate.csv has (2448, 2544)."
+          },
+          {
+            "description": "[G2_0154] micro coordinate mismatch: routing has (2352, 2400), micro_coordinate.csv has (2544, 2544)."
+          },
+          {
+            "description": "[G2_0155] micro coordinate mismatch: routing has (2448, 2400), micro_coordinate.csv has (2400, 2592)."
+          },
+          {
+            "description": "[G2_0156] micro coordinate mismatch: routing has (2544, 2400), micro_coordinate.csv has (2496, 2592)."
+          },
+          {
+            "description": "[G2_0157] micro coordinate mismatch: routing has (2640, 2400), micro_coordinate.csv has (2304, 1008)."
+          },
+          {
+            "description": "[G2_0158] micro coordinate mismatch: routing has (2496, 1008), micro_coordinate.csv has (2400, 1008)."
+          },
+          {
+            "description": "[G2_0159] micro coordinate mismatch: routing has (2448, 1056), micro_coordinate.csv has (2496, 1008)."
+          },
+          {
+            "description": "[G2_0160] micro coordinate mismatch: routing has (2544, 1056), micro_coordinate.csv has (2352, 1056)."
+          },
+          {
+            "description": "[G2_0161] micro coordinate mismatch: routing has (2496, 1104), micro_coordinate.csv has (2448, 1056)."
+          },
+          {
+            "description": "[G2_0162] micro coordinate mismatch: routing has (2448, 1152), micro_coordinate.csv has (2304, 1104)."
+          },
+          {
+            "description": "[G2_0163] micro coordinate mismatch: routing has (2544, 1152), micro_coordinate.csv has (2400, 1104)."
+          },
+          {
+            "description": "[G2_0164] micro coordinate mismatch: routing has (2496, 1200), micro_coordinate.csv has (2496, 1104)."
+          },
+          {
+            "description": "[G2_0165] micro coordinate mismatch: routing has (2448, 1248), micro_coordinate.csv has (2352, 1152)."
+          },
+          {
+            "description": "[G2_0166] micro coordinate mismatch: routing has (2544, 1248), micro_coordinate.csv has (2448, 1152)."
+          },
+          {
+            "description": "[G2_0167] micro coordinate mismatch: routing has (2496, 1296), micro_coordinate.csv has (2304, 1200)."
+          },
+          {
+            "description": "[G2_0168] micro coordinate mismatch: routing has (2448, 1344), micro_coordinate.csv has (2400, 1200)."
+          },
+          {
+            "description": "[G2_0169] micro coordinate mismatch: routing has (2544, 1344), micro_coordinate.csv has (2496, 1200)."
+          },
+          {
+            "description": "[G2_0170] micro coordinate mismatch: routing has (2496, 1392), micro_coordinate.csv has (2352, 1248)."
+          },
+          {
+            "description": "[G3_0016] micro coordinate mismatch: routing has (2832, 2976), micro_coordinate.csv has (3408, 3024)."
+          },
+          {
+            "description": "[G3_0017] micro coordinate mismatch: routing has (2928, 2976), micro_coordinate.csv has (3504, 3024)."
+          },
+          {
+            "description": "[G3_0018] micro coordinate mismatch: routing has (2784, 3024), micro_coordinate.csv has (3600, 3024)."
+          },
+          {
+            "description": "[G3_0019] micro coordinate mismatch: routing has (2880, 3024), micro_coordinate.csv has (3456, 3072)."
+          },
+          {
+            "description": "[G3_0020] micro coordinate mismatch: routing has (2976, 3024), micro_coordinate.csv has (3552, 3072)."
+          },
+          {
+            "description": "[G3_0021] micro coordinate mismatch: routing has (2832, 3072), micro_coordinate.csv has (3408, 3120)."
+          },
+          {
+            "description": "[G3_0022] micro coordinate mismatch: routing has (2928, 3072), micro_coordinate.csv has (3504, 3120)."
+          },
+          {
+            "description": "[G3_0023] micro coordinate mismatch: routing has (2784, 3120), micro_coordinate.csv has (3600, 3120)."
+          },
+          {
+            "description": "[G3_0024] micro coordinate mismatch: routing has (2880, 3120), micro_coordinate.csv has (3456, 3168)."
+          },
+          {
+            "description": "[G3_0025] micro coordinate mismatch: routing has (2976, 3120), micro_coordinate.csv has (3552, 3168)."
+          },
+          {
+            "description": "[G3_0026] micro coordinate mismatch: routing has (2832, 3168), micro_coordinate.csv has (3408, 3216)."
+          },
+          {
+            "description": "[G3_0027] micro coordinate mismatch: routing has (2928, 3168), micro_coordinate.csv has (3504, 3216)."
+          },
+          {
+            "description": "[G3_0028] micro coordinate mismatch: routing has (2784, 3216), micro_coordinate.csv has (3600, 3216)."
+          },
+          {
+            "description": "[G3_0029] micro coordinate mismatch: routing has (2880, 3216), micro_coordinate.csv has (3456, 3264)."
+          },
+          {
+            "description": "[G3_0030] micro coordinate mismatch: routing has (2976, 3216), micro_coordinate.csv has (3552, 3264)."
+          },
+          {
+            "description": "[G3_0031] micro coordinate mismatch: routing has (2832, 3264), micro_coordinate.csv has (3408, 3312)."
+          },
+          {
+            "description": "[G3_0032] micro coordinate mismatch: routing has (2928, 3264), micro_coordinate.csv has (3504, 3312)."
+          },
+          {
+            "description": "[G3_0033] micro coordinate mismatch: routing has (2784, 3312), micro_coordinate.csv has (3600, 3312)."
+          },
+          {
+            "description": "[G3_0034] micro coordinate mismatch: routing has (2880, 3312), micro_coordinate.csv has (3456, 3360)."
+          },
+          {
+            "description": "[G3_0035] micro coordinate mismatch: routing has (2976, 3312), micro_coordinate.csv has (3552, 3360)."
+          },
+          {
+            "description": "[G3_0036] micro coordinate mismatch: routing has (2832, 3360), micro_coordinate.csv has (3408, 3408)."
+          },
+          {
+            "description": "[G3_0037] micro coordinate mismatch: routing has (2832, 1536), micro_coordinate.csv has (2832, 1440)."
+          },
+          {
+            "description": "[G3_0038] micro coordinate mismatch: routing has (2928, 1536), micro_coordinate.csv has (2928, 1440)."
+          },
+          {
+            "description": "[G3_0039] micro coordinate mismatch: routing has (2784, 1584), micro_coordinate.csv has (3024, 1440)."
+          },
+          {
+            "description": "[G3_0040] micro coordinate mismatch: routing has (2880, 1584), micro_coordinate.csv has (2880, 1488)."
+          },
+          {
+            "description": "[G3_0041] micro coordinate mismatch: routing has (2976, 1584), micro_coordinate.csv has (2976, 1488)."
+          },
+          {
+            "description": "[G3_0042] micro coordinate mismatch: routing has (2832, 1632), micro_coordinate.csv has (2832, 1536)."
+          },
+          {
+            "description": "[G3_0043] micro coordinate mismatch: routing has (3264, 2256), micro_coordinate.csv has (2928, 1536)."
+          },
+          {
+            "description": "[G3_0044] micro coordinate mismatch: routing has (3360, 2256), micro_coordinate.csv has (3024, 1536)."
+          },
+          {
+            "description": "[G3_0045] micro coordinate mismatch: routing has (3456, 2256), micro_coordinate.csv has (2880, 1584)."
+          },
+          {
+            "description": "[G3_0046] micro coordinate mismatch: routing has (3312, 2304), micro_coordinate.csv has (2976, 1584)."
+          },
+          {
+            "description": "[G3_0047] micro coordinate mismatch: routing has (3408, 2304), micro_coordinate.csv has (2832, 1632)."
+          },
+          {
+            "description": "[G3_0048] micro coordinate mismatch: routing has (3264, 2352), micro_coordinate.csv has (2928, 1632)."
+          },
+          {
+            "description": "[G3_0049] micro coordinate mismatch: routing has (3360, 2352), micro_coordinate.csv has (3024, 1632)."
+          },
+          {
+            "description": "[G3_0050] micro coordinate mismatch: routing has (3456, 2352), micro_coordinate.csv has (2880, 1680)."
+          },
+          {
+            "description": "[G3_0051] micro coordinate mismatch: routing has (3312, 2400), micro_coordinate.csv has (2976, 1680)."
+          },
+          {
+            "description": "[G3_0052] micro coordinate mismatch: routing has (3408, 2400), micro_coordinate.csv has (2832, 1728)."
+          },
+          {
+            "description": "[G3_0053] micro coordinate mismatch: routing has (3264, 2448), micro_coordinate.csv has (2928, 1728)."
+          },
+          {
+            "description": "[G3_0054] micro coordinate mismatch: routing has (3360, 2448), micro_coordinate.csv has (2880, 3168)."
+          },
+          {
+            "description": "[G3_0055] micro coordinate mismatch: routing has (3456, 2448), micro_coordinate.csv has (2976, 3168)."
+          },
+          {
+            "description": "[G3_0056] micro coordinate mismatch: routing has (3312, 2496), micro_coordinate.csv has (3072, 3168)."
+          },
+          {
+            "description": "[G3_0057] micro coordinate mismatch: routing has (3408, 2496), micro_coordinate.csv has (2832, 3216)."
+          },
+          {
+            "description": "[G3_0058] micro coordinate mismatch: routing has (3264, 2544), micro_coordinate.csv has (2928, 3216)."
+          },
+          {
+            "description": "[G3_0059] micro coordinate mismatch: routing has (3360, 2544), micro_coordinate.csv has (3024, 3216)."
+          },
+          {
+            "description": "[G3_0060] micro coordinate mismatch: routing has (3456, 2544), micro_coordinate.csv has (3120, 3216)."
+          },
+          {
+            "description": "[G3_0061] micro coordinate mismatch: routing has (3312, 2592), micro_coordinate.csv has (2880, 3264)."
+          },
+          {
+            "description": "[G3_0062] micro coordinate mismatch: routing has (3408, 2592), micro_coordinate.csv has (2976, 3264)."
+          },
+          {
+            "description": "[G3_0063] micro coordinate mismatch: routing has (3696, 3168), micro_coordinate.csv has (3072, 3264)."
+          },
+          {
+            "description": "[G3_0064] micro coordinate mismatch: routing has (3792, 3168), micro_coordinate.csv has (2832, 3312)."
+          },
+          {
+            "description": "[G3_0065] micro coordinate mismatch: routing has (3888, 3168), micro_coordinate.csv has (2928, 3312)."
+          },
+          {
+            "description": "[G3_0066] micro coordinate mismatch: routing has (3984, 3168), micro_coordinate.csv has (3024, 3312)."
+          },
+          {
+            "description": "[G3_0067] micro coordinate mismatch: routing has (3744, 3216), micro_coordinate.csv has (3120, 3312)."
+          },
+          {
+            "description": "[G3_0068] micro coordinate mismatch: routing has (3840, 3216), micro_coordinate.csv has (2880, 3360)."
+          },
+          {
+            "description": "[G3_0069] micro coordinate mismatch: routing has (3936, 3216), micro_coordinate.csv has (2976, 3360)."
+          },
+          {
+            "description": "[G3_0070] micro coordinate mismatch: routing has (3696, 3264), micro_coordinate.csv has (3072, 3360)."
+          },
+          {
+            "description": "[G3_0071] micro coordinate mismatch: routing has (3792, 3264), micro_coordinate.csv has (2832, 3408)."
+          },
+          {
+            "description": "[G3_0072] micro coordinate mismatch: routing has (3888, 3264), micro_coordinate.csv has (2928, 3408)."
+          },
+          {
+            "description": "[G3_0073] micro coordinate mismatch: routing has (3984, 3264), micro_coordinate.csv has (3024, 3408)."
+          },
+          {
+            "description": "[G3_0074] micro coordinate mismatch: routing has (3744, 3312), micro_coordinate.csv has (3120, 3408)."
+          },
+          {
+            "description": "[G3_0075] micro coordinate mismatch: routing has (3840, 3312), micro_coordinate.csv has (3408, 1488)."
+          },
+          {
+            "description": "[G3_0076] micro coordinate mismatch: routing has (3936, 3312), micro_coordinate.csv has (3504, 1488)."
+          },
+          {
+            "description": "[G3_0077] micro coordinate mismatch: routing has (3696, 3360), micro_coordinate.csv has (3600, 1488)."
+          },
+          {
+            "description": "[G3_0078] micro coordinate mismatch: routing has (3792, 3360), micro_coordinate.csv has (3456, 1536)."
+          },
+          {
+            "description": "[G3_0079] micro coordinate mismatch: routing has (3888, 3360), micro_coordinate.csv has (3552, 1536)."
+          },
+          {
+            "description": "[G3_0080] micro coordinate mismatch: routing has (3984, 3360), micro_coordinate.csv has (3408, 1584)."
+          },
+          {
+            "description": "[G3_0081] micro coordinate mismatch: routing has (3744, 3408), micro_coordinate.csv has (4032, 2256)."
+          },
+          {
+            "description": "[G3_0082] micro coordinate mismatch: routing has (3696, 1488), micro_coordinate.csv has (4128, 2256)."
+          },
+          {
+            "description": "[G3_0083] micro coordinate mismatch: routing has (3792, 1488), micro_coordinate.csv has (3984, 2304)."
+          },
+          {
+            "description": "[G3_0084] micro coordinate mismatch: routing has (3888, 1488), micro_coordinate.csv has (4080, 2304)."
+          },
+          {
+            "description": "[G3_0085] micro coordinate mismatch: routing has (3744, 1536), micro_coordinate.csv has (4176, 2304)."
+          },
+          {
+            "description": "[G3_0086] micro coordinate mismatch: routing has (3840, 1536), micro_coordinate.csv has (4032, 2352)."
+          },
+          {
+            "description": "[G3_0087] micro coordinate mismatch: routing has (3696, 1584), micro_coordinate.csv has (4128, 2352)."
+          },
+          {
+            "description": "[G3_0088] micro coordinate mismatch: routing has (3792, 1584), micro_coordinate.csv has (3984, 2400)."
+          },
+          {
+            "description": "[G3_0089] micro coordinate mismatch: routing has (3888, 1584), micro_coordinate.csv has (4080, 2400)."
+          },
+          {
+            "description": "[G3_0090] micro coordinate mismatch: routing has (3744, 1632), micro_coordinate.csv has (4176, 2400)."
+          },
+          {
+            "description": "[G3_0091] micro coordinate mismatch: routing has (3840, 1632), micro_coordinate.csv has (4032, 2448)."
+          },
+          {
+            "description": "[G3_0092] micro coordinate mismatch: routing has (3696, 1680), micro_coordinate.csv has (4128, 2448)."
+          },
+          {
+            "description": "[G3_0093] micro coordinate mismatch: routing has (3792, 1680), micro_coordinate.csv has (3984, 2496)."
+          },
+          {
+            "description": "[G3_0094] micro coordinate mismatch: routing has (3888, 1680), micro_coordinate.csv has (4080, 2496)."
+          },
+          {
+            "description": "[G3_0095] micro coordinate mismatch: routing has (3744, 1728), micro_coordinate.csv has (4176, 2496)."
+          },
+          {
+            "description": "[G3_0096] micro coordinate mismatch: routing has (3840, 1728), micro_coordinate.csv has (4032, 2544)."
+          },
+          {
+            "description": "[G3_0097] micro coordinate mismatch: routing has (3696, 1776), micro_coordinate.csv has (4128, 2544)."
+          },
+          {
+            "description": "[G3_0098] micro coordinate mismatch: routing has (3792, 1776), micro_coordinate.csv has (3984, 2592)."
+          },
+          {
+            "description": "[G3_0099] micro coordinate mismatch: routing has (3888, 1776), micro_coordinate.csv has (4080, 2592)."
+          },
+          {
+            "description": "[G3_0100] micro coordinate mismatch: routing has (3744, 1824), micro_coordinate.csv has (4176, 2592)."
+          },
+          {
+            "description": "[G2_0171] micro coordinate mismatch: routing has (4176, 2352), micro_coordinate.csv has (4560, 3216)."
+          },
+          {
+            "description": "[G2_0172] micro coordinate mismatch: routing has (4272, 2352), micro_coordinate.csv has (4656, 3216)."
+          },
+          {
+            "description": "[G2_0173] micro coordinate mismatch: routing has (4368, 2352), micro_coordinate.csv has (4752, 3216)."
+          },
+          {
+            "description": "[G2_0174] micro coordinate mismatch: routing has (4128, 2400), micro_coordinate.csv has (4512, 3264)."
+          },
+          {
+            "description": "[G2_0175] micro coordinate mismatch: routing has (4224, 2400), micro_coordinate.csv has (4608, 3264)."
+          },
+          {
+            "description": "[G2_0176] micro coordinate mismatch: routing has (4320, 2400), micro_coordinate.csv has (4704, 3264)."
+          },
+          {
+            "description": "[G2_0177] micro coordinate mismatch: routing has (4416, 2400), micro_coordinate.csv has (4800, 3264)."
+          },
+          {
+            "description": "[G2_0178] micro coordinate mismatch: routing has (4176, 2448), micro_coordinate.csv has (4560, 3312)."
+          },
+          {
+            "description": "[G2_0179] micro coordinate mismatch: routing has (4272, 2448), micro_coordinate.csv has (4656, 3312)."
+          },
+          {
+            "description": "[G2_0180] micro coordinate mismatch: routing has (4368, 2448), micro_coordinate.csv has (4752, 3312)."
+          },
+          {
+            "description": "[G2_0181] micro coordinate mismatch: routing has (4128, 2496), micro_coordinate.csv has (4512, 3360)."
+          },
+          {
+            "description": "[G2_0182] micro coordinate mismatch: routing has (4224, 2496), micro_coordinate.csv has (4608, 3360)."
+          },
+          {
+            "description": "[G2_0183] micro coordinate mismatch: routing has (4320, 2496), micro_coordinate.csv has (4704, 3360)."
+          },
+          {
+            "description": "[G2_0184] micro coordinate mismatch: routing has (4416, 2496), micro_coordinate.csv has (4800, 3360)."
+          },
+          {
+            "description": "[G2_0185] micro coordinate mismatch: routing has (4176, 2544), micro_coordinate.csv has (4560, 3408)."
+          },
+          {
+            "description": "[G2_0186] micro coordinate mismatch: routing has (4272, 2544), micro_coordinate.csv has (4656, 3408)."
+          },
+          {
+            "description": "[G2_0187] micro coordinate mismatch: routing has (4656, 2352), micro_coordinate.csv has (4608, 1488)."
+          },
+          {
+            "description": "[G2_0188] micro coordinate mismatch: routing has (4752, 2352), micro_coordinate.csv has (4704, 1488)."
+          },
+          {
+            "description": "[G2_0189] micro coordinate mismatch: routing has (4848, 2352), micro_coordinate.csv has (4800, 1488)."
+          },
+          {
+            "description": "[G2_0190] micro coordinate mismatch: routing has (4704, 2400), micro_coordinate.csv has (4656, 1536)."
+          },
+          {
+            "description": "[G2_0191] micro coordinate mismatch: routing has (4800, 2400), micro_coordinate.csv has (4752, 1536)."
+          },
+          {
+            "description": "[G2_0192] micro coordinate mismatch: routing has (4656, 2448), micro_coordinate.csv has (4608, 1584)."
+          },
+          {
+            "description": "[G2_0193] micro coordinate mismatch: routing has (4752, 2448), micro_coordinate.csv has (4704, 1584)."
+          },
+          {
+            "description": "[G2_0194] micro coordinate mismatch: routing has (4848, 2448), micro_coordinate.csv has (4800, 1584)."
+          },
+          {
+            "description": "[G2_0195] micro coordinate mismatch: routing has (4704, 2496), micro_coordinate.csv has (4656, 1632)."
+          },
+          {
+            "description": "[G2_0196] micro coordinate mismatch: routing has (4800, 2496), micro_coordinate.csv has (4752, 1632)."
+          },
+          {
+            "description": "[G2_0197] micro coordinate mismatch: routing has (4656, 2544), micro_coordinate.csv has (4608, 1680)."
+          },
+          {
+            "description": "[G2_0198] micro coordinate mismatch: routing has (4752, 2544), micro_coordinate.csv has (4704, 1680)."
+          },
+          {
+            "description": "[G2_0199] micro coordinate mismatch: routing has (4848, 2544), micro_coordinate.csv has (4800, 1680)."
+          },
+          {
+            "description": "[G2_0200] micro coordinate mismatch: routing has (4704, 2592), micro_coordinate.csv has (4656, 1728)."
+          },
+          {
+            "description": "[G3_0101] micro coordinate mismatch: routing has (5040, 3072), micro_coordinate.csv has (5040, 3120)."
+          },
+          {
+            "description": "[G3_0102] micro coordinate mismatch: routing has (5136, 3072), micro_coordinate.csv has (5136, 3120)."
+          },
+          {
+            "description": "[G3_0103] micro coordinate mismatch: routing has (4992, 3120), micro_coordinate.csv has (5232, 3120)."
+          },
+          {
+            "description": "[G3_0104] micro coordinate mismatch: routing has (5088, 3120), micro_coordinate.csv has (5088, 3168)."
+          },
+          {
+            "description": "[G3_0105] micro coordinate mismatch: routing has (5184, 3120), micro_coordinate.csv has (5184, 3168)."
+          },
+          {
+            "description": "[G3_0106] micro coordinate mismatch: routing has (5040, 3168), micro_coordinate.csv has (5040, 3216)."
+          },
+          {
+            "description": "[G3_0107] micro coordinate mismatch: routing has (5136, 3168), micro_coordinate.csv has (5136, 3216)."
+          },
+          {
+            "description": "[G3_0108] micro coordinate mismatch: routing has (4992, 3216), micro_coordinate.csv has (5232, 3216)."
+          },
+          {
+            "description": "[G3_0109] micro coordinate mismatch: routing has (5088, 3216), micro_coordinate.csv has (5088, 3264)."
+          },
+          {
+            "description": "[G3_0110] micro coordinate mismatch: routing has (5184, 3216), micro_coordinate.csv has (5184, 3264)."
+          },
+          {
+            "description": "[G3_0111] micro coordinate mismatch: routing has (5040, 3264), micro_coordinate.csv has (5040, 3312)."
+          },
+          {
+            "description": "[G3_0112] micro coordinate mismatch: routing has (5136, 3264), micro_coordinate.csv has (5136, 3312)."
+          },
+          {
+            "description": "[G3_0113] micro coordinate mismatch: routing has (4992, 3312), micro_coordinate.csv has (5232, 3312)."
+          },
+          {
+            "description": "[G3_0114] micro coordinate mismatch: routing has (5088, 3312), micro_coordinate.csv has (5088, 3360)."
+          },
+          {
+            "description": "[G3_0115] micro coordinate mismatch: routing has (5184, 3312), micro_coordinate.csv has (5184, 3360)."
+          },
+          {
+            "description": "[G3_0116] micro coordinate mismatch: routing has (5040, 3360), micro_coordinate.csv has (5040, 3408)."
+          },
+          {
+            "description": "[G3_0117] micro coordinate mismatch: routing has (5136, 3360), micro_coordinate.csv has (5136, 3408)."
+          },
+          {
+            "description": "[G3_0118] micro coordinate mismatch: routing has (4992, 3408), micro_coordinate.csv has (5232, 3408)."
+          },
+          {
+            "description": "[G3_0119] micro coordinate mismatch: routing has (5088, 3408), micro_coordinate.csv has (5088, 3456)."
+          },
+          {
+            "description": "[G3_0120] micro coordinate mismatch: routing has (5184, 3408), micro_coordinate.csv has (5184, 3456)."
+          },
+          {
+            "description": "[G3_0121] micro coordinate mismatch: routing has (5040, 3456), micro_coordinate.csv has (5040, 3504)."
+          },
+          {
+            "description": "[G3_0122] micro coordinate mismatch: routing has (4992, 1440), micro_coordinate.csv has (5088, 1392)."
+          },
+          {
+            "description": "[G3_0123] micro coordinate mismatch: routing has (5088, 1440), micro_coordinate.csv has (5184, 1392)."
+          },
+          {
+            "description": "[G3_0124] micro coordinate mismatch: routing has (5184, 1440), micro_coordinate.csv has (5040, 1440)."
+          },
+          {
+            "description": "[G3_0125] micro coordinate mismatch: routing has (5040, 1488), micro_coordinate.csv has (5136, 1440)."
+          },
+          {
+            "description": "[G3_0126] micro coordinate mismatch: routing has (5136, 1488), micro_coordinate.csv has (5232, 1440)."
+          },
+          {
+            "description": "[G3_0127] micro coordinate mismatch: routing has (4992, 1536), micro_coordinate.csv has (5088, 1488)."
+          },
+          {
+            "description": "[G3_0128] micro coordinate mismatch: routing has (5088, 1536), micro_coordinate.csv has (5184, 1488)."
+          },
+          {
+            "description": "[G3_0129] micro coordinate mismatch: routing has (5184, 1536), micro_coordinate.csv has (5040, 1536)."
+          },
+          {
+            "description": "[G3_0130] micro coordinate mismatch: routing has (5040, 1584), micro_coordinate.csv has (5136, 1536)."
+          },
+          {
+            "description": "[G3_0131] micro coordinate mismatch: routing has (5136, 1584), micro_coordinate.csv has (5232, 1536)."
+          },
+          {
+            "description": "[G3_0132] micro coordinate mismatch: routing has (4992, 1632), micro_coordinate.csv has (5088, 1584)."
+          },
+          {
+            "description": "[G3_0133] micro coordinate mismatch: routing has (5088, 1632), micro_coordinate.csv has (5184, 1584)."
+          },
+          {
+            "description": "[G3_0134] micro coordinate mismatch: routing has (5184, 1632), micro_coordinate.csv has (5040, 1632)."
+          },
+          {
+            "description": "[G3_0135] micro coordinate mismatch: routing has (5040, 1680), micro_coordinate.csv has (5136, 1632)."
+          },
+          {
+            "description": "[G3_0136] micro coordinate mismatch: routing has (5136, 1680), micro_coordinate.csv has (5232, 1632)."
+          },
+          {
+            "description": "[G3_0137] micro coordinate mismatch: routing has (4992, 1728), micro_coordinate.csv has (5088, 1680)."
+          },
+          {
+            "description": "[G3_0138] micro coordinate mismatch: routing has (5520, 2928), micro_coordinate.csv has (5616, 2976)."
+          },
+          {
+            "description": "[G3_0139] micro coordinate mismatch: routing has (5472, 2976), micro_coordinate.csv has (5712, 2976)."
+          },
+          {
+            "description": "[G3_0140] micro coordinate mismatch: routing has (5568, 2976), micro_coordinate.csv has (5664, 3024)."
+          },
+          {
+            "description": "[G3_0141] micro coordinate mismatch: routing has (5520, 3024), micro_coordinate.csv has (5616, 3072)."
+          },
+          {
+            "description": "[G3_0142] micro coordinate mismatch: routing has (5472, 3072), micro_coordinate.csv has (5712, 3072)."
+          },
+          {
+            "description": "[G3_0143] micro coordinate mismatch: routing has (5568, 3072), micro_coordinate.csv has (5664, 3120)."
+          },
+          {
+            "description": "[G3_0144] micro coordinate mismatch: routing has (5520, 3120), micro_coordinate.csv has (5616, 3168)."
+          },
+          {
+            "description": "[G3_0145] micro coordinate mismatch: routing has (5472, 3168), micro_coordinate.csv has (5712, 3168)."
+          },
+          {
+            "description": "[G3_0146] micro coordinate mismatch: routing has (5568, 3168), micro_coordinate.csv has (5664, 3216)."
+          },
+          {
+            "description": "[G3_0147] micro coordinate mismatch: routing has (5520, 3216), micro_coordinate.csv has (5616, 3264)."
+          },
+          {
+            "description": "[G3_0148] micro coordinate mismatch: routing has (5472, 3264), micro_coordinate.csv has (5712, 3264)."
+          },
+          {
+            "description": "[G3_0149] micro coordinate mismatch: routing has (5568, 3264), micro_coordinate.csv has (5664, 3312)."
+          },
+          {
+            "description": "[G3_0150] micro coordinate mismatch: routing has (5520, 3312), micro_coordinate.csv has (5616, 3360)."
+          },
+          {
+            "description": "[G3_0151] micro coordinate mismatch: routing has (5472, 3360), micro_coordinate.csv has (5712, 3360)."
+          },
+          {
+            "description": "[G3_0152] micro coordinate mismatch: routing has (5568, 3360), micro_coordinate.csv has (5664, 3408)."
+          },
+          {
+            "description": "[G3_0153] micro coordinate mismatch: routing has (5520, 3408), micro_coordinate.csv has (5616, 3456)."
+          },
+          {
+            "description": "[G3_0154] micro coordinate mismatch: routing has (5472, 3456), micro_coordinate.csv has (5712, 3456)."
+          },
+          {
+            "description": "[G3_0155] micro coordinate mismatch: routing has (5568, 3456), micro_coordinate.csv has (5664, 3504)."
+          },
+          {
+            "description": "[G3_0156] micro coordinate mismatch: routing has (5520, 3504), micro_coordinate.csv has (5616, 3552)."
+          },
+          {
+            "description": "[G3_0157] micro coordinate mismatch: routing has (5472, 1344), micro_coordinate.csv has (5664, 1296)."
+          },
+          {
+            "description": "[G3_0158] micro coordinate mismatch: routing has (5568, 1344), micro_coordinate.csv has (5616, 1344)."
+          },
+          {
+            "description": "[G3_0159] micro coordinate mismatch: routing has (5520, 1392), micro_coordinate.csv has (5712, 1344)."
+          },
+          {
+            "description": "[G3_0160] micro coordinate mismatch: routing has (5472, 1440), micro_coordinate.csv has (5664, 1392)."
+          },
+          {
+            "description": "[G3_0161] micro coordinate mismatch: routing has (5568, 1440), micro_coordinate.csv has (5616, 1440)."
+          },
+          {
+            "description": "[G3_0162] micro coordinate mismatch: routing has (5520, 1488), micro_coordinate.csv has (5712, 1440)."
+          },
+          {
+            "description": "[G3_0163] micro coordinate mismatch: routing has (5472, 1536), micro_coordinate.csv has (5664, 1488)."
+          },
+          {
+            "description": "[G3_0164] micro coordinate mismatch: routing has (5568, 1536), micro_coordinate.csv has (5616, 1536)."
+          },
+          {
+            "description": "[G3_0165] micro coordinate mismatch: routing has (5520, 1584), micro_coordinate.csv has (5712, 1536)."
+          },
+          {
+            "description": "[G3_0166] micro coordinate mismatch: routing has (5472, 1632), micro_coordinate.csv has (5664, 1584)."
+          },
+          {
+            "description": "[G3_0167] micro coordinate mismatch: routing has (5568, 1632), micro_coordinate.csv has (5616, 1632)."
+          },
+          {
+            "description": "[G3_0168] micro coordinate mismatch: routing has (5520, 1680), micro_coordinate.csv has (5712, 1632)."
+          },
+          {
+            "description": "[G3_0169] micro coordinate mismatch: routing has (5472, 1728), micro_coordinate.csv has (5664, 1680)."
+          },
+          {
+            "description": "[G3_0170] micro coordinate mismatch: routing has (6096, 2976), micro_coordinate.csv has (6192, 3024)."
+          },
+          {
+            "description": "[G3_0171] micro coordinate mismatch: routing has (6192, 2976), micro_coordinate.csv has (6288, 3024)."
+          },
+          {
+            "description": "[G3_0172] micro coordinate mismatch: routing has (6144, 3024), micro_coordinate.csv has (6240, 3072)."
+          },
+          {
+            "description": "[G3_0173] micro coordinate mismatch: routing has (6096, 3072), micro_coordinate.csv has (6192, 3120)."
+          },
+          {
+            "description": "[G3_0174] micro coordinate mismatch: routing has (6192, 3072), micro_coordinate.csv has (6288, 3120)."
+          },
+          {
+            "description": "[G3_0175] micro coordinate mismatch: routing has (6144, 3120), micro_coordinate.csv has (6240, 3168)."
+          },
+          {
+            "description": "[G3_0176] micro coordinate mismatch: routing has (6096, 3168), micro_coordinate.csv has (6192, 3216)."
+          },
+          {
+            "description": "[G3_0177] micro coordinate mismatch: routing has (6192, 3168), micro_coordinate.csv has (6288, 3216)."
+          },
+          {
+            "description": "[G3_0178] micro coordinate mismatch: routing has (6144, 3216), micro_coordinate.csv has (6240, 3264)."
+          },
+          {
+            "description": "[G3_0179] micro coordinate mismatch: routing has (6096, 3264), micro_coordinate.csv has (6192, 3312)."
+          },
+          {
+            "description": "[G3_0180] micro coordinate mismatch: routing has (6192, 3264), micro_coordinate.csv has (6288, 3312)."
+          },
+          {
+            "description": "[G3_0181] micro coordinate mismatch: routing has (6144, 3312), micro_coordinate.csv has (6240, 3360)."
+          },
+          {
+            "description": "[G3_0182] micro coordinate mismatch: routing has (6096, 3360), micro_coordinate.csv has (6192, 3408)."
+          },
+          {
+            "description": "[G3_0183] micro coordinate mismatch: routing has (6192, 3360), micro_coordinate.csv has (6288, 3408)."
+          },
+          {
+            "description": "[G3_0184] micro coordinate mismatch: routing has (6144, 3408), micro_coordinate.csv has (6240, 3456)."
+          },
+          {
+            "description": "[G3_0185] micro coordinate mismatch: routing has (6096, 3456), micro_coordinate.csv has (6192, 3504)."
+          },
+          {
+            "description": "[G3_0186] micro coordinate mismatch: routing has (6192, 3456), micro_coordinate.csv has (6288, 3504)."
+          },
+          {
+            "description": "[G3_0187] micro coordinate mismatch: routing has (6144, 3504), micro_coordinate.csv has (6240, 3552)."
+          },
+          {
+            "description": "[G3_0188] micro coordinate mismatch: routing has (6144, 1344), micro_coordinate.csv has (6384, 1296)."
+          },
+          {
+            "description": "[G3_0189] micro coordinate mismatch: routing has (6096, 1392), micro_coordinate.csv has (6480, 1296)."
+          },
+          {
+            "description": "[G3_0190] micro coordinate mismatch: routing has (6192, 1392), micro_coordinate.csv has (6432, 1344)."
+          },
+          {
+            "description": "[G3_0191] micro coordinate mismatch: routing has (6144, 1440), micro_coordinate.csv has (6384, 1392)."
+          },
+          {
+            "description": "[G3_0192] micro coordinate mismatch: routing has (6096, 1488), micro_coordinate.csv has (6480, 1392)."
+          },
+          {
+            "description": "[G3_0193] micro coordinate mismatch: routing has (6192, 1488), micro_coordinate.csv has (6432, 1440)."
+          },
+          {
+            "description": "[G3_0194] micro coordinate mismatch: routing has (6144, 1536), micro_coordinate.csv has (6384, 1488)."
+          },
+          {
+            "description": "[G3_0195] micro coordinate mismatch: routing has (6096, 1584), micro_coordinate.csv has (6480, 1488)."
+          },
+          {
+            "description": "[G3_0196] micro coordinate mismatch: routing has (6192, 1584), micro_coordinate.csv has (6432, 1536)."
+          },
+          {
+            "description": "[G3_0197] micro coordinate mismatch: routing has (6144, 1632), micro_coordinate.csv has (6384, 1584)."
+          },
+          {
+            "description": "[G3_0198] micro coordinate mismatch: routing has (6096, 1680), micro_coordinate.csv has (6480, 1584)."
+          },
+          {
+            "description": "[G3_0199] micro coordinate mismatch: routing has (6192, 1680), micro_coordinate.csv has (6432, 1632)."
+          },
+          {
+            "description": "[G3_0200] micro coordinate mismatch: routing has (6144, 1728), micro_coordinate.csv has (6384, 1680)."
+          },
+          {
+            "description": "[G1_0029] micro coordinate mismatch: routing has (6432, 3552), micro_coordinate.csv has (6960, 2976)."
+          },
+          {
+            "description": "[G1_0030] micro coordinate mismatch: routing has (6528, 3552), micro_coordinate.csv has (6912, 3024)."
+          },
+          {
+            "description": "[G1_0031] micro coordinate mismatch: routing has (6624, 3552), micro_coordinate.csv has (7008, 3024)."
+          },
+          {
+            "description": "[G1_0032] micro coordinate mismatch: routing has (6480, 3600), micro_coordinate.csv has (6960, 3072)."
+          },
+          {
+            "description": "[G1_0033] micro coordinate mismatch: routing has (6576, 3600), micro_coordinate.csv has (6912, 3120)."
+          },
+          {
+            "description": "[G1_0034] micro coordinate mismatch: routing has (6432, 3648), micro_coordinate.csv has (7008, 3120)."
+          },
+          {
+            "description": "[G1_0035] micro coordinate mismatch: routing has (6528, 3648), micro_coordinate.csv has (6960, 3168)."
+          },
+          {
+            "description": "[G1_0036] micro coordinate mismatch: routing has (6624, 3648), micro_coordinate.csv has (6912, 3216)."
+          },
+          {
+            "description": "[G1_0037] micro coordinate mismatch: routing has (6480, 3696), micro_coordinate.csv has (7008, 3216)."
+          },
+          {
+            "description": "[G1_0038] micro coordinate mismatch: routing has (6576, 3696), micro_coordinate.csv has (6960, 3264)."
+          },
+          {
+            "description": "[G1_0039] micro coordinate mismatch: routing has (6432, 3744), micro_coordinate.csv has (6912, 3312)."
+          },
+          {
+            "description": "[G1_0040] micro coordinate mismatch: routing has (6528, 3744), micro_coordinate.csv has (7008, 3312)."
+          },
+          {
+            "description": "[G1_0041] micro coordinate mismatch: routing has (6432, 2304), micro_coordinate.csv has (6960, 3360)."
+          },
+          {
+            "description": "[G1_0042] micro coordinate mismatch: routing has (6528, 2304), micro_coordinate.csv has (6912, 3408)."
+          },
+          {
+            "description": "[G1_0043] micro coordinate mismatch: routing has (6624, 2304), micro_coordinate.csv has (7008, 3408)."
+          },
+          {
+            "description": "[G1_0044] micro coordinate mismatch: routing has (6480, 2352), micro_coordinate.csv has (6960, 3456)."
+          },
+          {
+            "description": "[G1_0045] micro coordinate mismatch: routing has (6576, 2352), micro_coordinate.csv has (6912, 3504)."
+          },
+          {
+            "description": "[G1_0046] micro coordinate mismatch: routing has (6432, 2400), micro_coordinate.csv has (7008, 3504)."
+          },
+          {
+            "description": "[G1_0047] micro coordinate mismatch: routing has (6528, 2400), micro_coordinate.csv has (6816, 1344)."
+          },
+          {
+            "description": "[G1_0048] micro coordinate mismatch: routing has (6624, 2400), micro_coordinate.csv has (6912, 1344)."
+          },
+          {
+            "description": "[G1_0049] micro coordinate mismatch: routing has (6480, 2448), micro_coordinate.csv has (6864, 1392)."
+          },
+          {
+            "description": "[G1_0050] micro coordinate mismatch: routing has (6576, 2448), micro_coordinate.csv has (6816, 1440)."
+          },
+          {
+            "description": "[G1_0051] micro coordinate mismatch: routing has (6432, 2496), micro_coordinate.csv has (6912, 1440)."
+          },
+          {
+            "description": "[G1_0052] micro coordinate mismatch: routing has (6528, 1152), micro_coordinate.csv has (6864, 1488)."
+          },
+          {
+            "description": "[G1_0053] micro coordinate mismatch: routing has (6624, 1152), micro_coordinate.csv has (6816, 1536)."
+          },
+          {
+            "description": "[G1_0054] micro coordinate mismatch: routing has (6576, 1200), micro_coordinate.csv has (6912, 1536)."
+          },
+          {
+            "description": "[G1_0055] micro coordinate mismatch: routing has (6528, 1248), micro_coordinate.csv has (6864, 1584)."
+          },
+          {
+            "description": "[G1_0056] micro coordinate mismatch: routing has (6624, 1248), micro_coordinate.csv has (6816, 1632)."
+          },
+          {
+            "description": "[G3_0201] micro coordinate mismatch: routing has (7248, 2928), micro_coordinate.csv has (7248, 3600)."
+          },
+          {
+            "description": "[G3_0202] micro coordinate mismatch: routing has (7200, 2976), micro_coordinate.csv has (7344, 3600)."
+          },
+          {
+            "description": "[G3_0203] micro coordinate mismatch: routing has (7296, 2976), micro_coordinate.csv has (7440, 3600)."
+          },
+          {
+            "description": "[G3_0204] micro coordinate mismatch: routing has (7248, 3024), micro_coordinate.csv has (7200, 3648)."
+          },
+          {
+            "description": "[G3_0205] micro coordinate mismatch: routing has (7200, 3072), micro_coordinate.csv has (7296, 3648)."
+          },
+          {
+            "description": "[G3_0206] micro coordinate mismatch: routing has (7296, 3072), micro_coordinate.csv has (7392, 3648)."
+          },
+          {
+            "description": "[G3_0207] micro coordinate mismatch: routing has (7248, 3120), micro_coordinate.csv has (7488, 3648)."
+          },
+          {
+            "description": "[G3_0208] micro coordinate mismatch: routing has (7200, 3168), micro_coordinate.csv has (7248, 3696)."
+          },
+          {
+            "description": "[G3_0209] micro coordinate mismatch: routing has (7296, 3168), micro_coordinate.csv has (7344, 3696)."
+          },
+          {
+            "description": "[G3_0210] micro coordinate mismatch: routing has (7248, 3216), micro_coordinate.csv has (7440, 3696)."
+          },
+          {
+            "description": "[G3_0211] micro coordinate mismatch: routing has (7200, 3264), micro_coordinate.csv has (7200, 3744)."
+          },
+          {
+            "description": "[G3_0212] micro coordinate mismatch: routing has (7296, 3264), micro_coordinate.csv has (7296, 3744)."
+          },
+          {
+            "description": "[G3_0213] micro coordinate mismatch: routing has (7248, 3312), micro_coordinate.csv has (7392, 3744)."
+          },
+          {
+            "description": "[G3_0214] micro coordinate mismatch: routing has (7200, 3360), micro_coordinate.csv has (7488, 3744)."
+          },
+          {
+            "description": "[G3_0215] micro coordinate mismatch: routing has (7296, 3360), micro_coordinate.csv has (7248, 3792)."
+          },
+          {
+            "description": "[G3_0216] micro coordinate mismatch: routing has (7248, 3408), micro_coordinate.csv has (7344, 3792)."
+          },
+          {
+            "description": "[G3_0217] micro coordinate mismatch: routing has (7200, 3456), micro_coordinate.csv has (7440, 3792)."
+          },
+          {
+            "description": "[G3_0218] micro coordinate mismatch: routing has (7296, 3456), micro_coordinate.csv has (7200, 3840)."
+          },
+          {
+            "description": "[G3_0219] micro coordinate mismatch: routing has (7248, 3504), micro_coordinate.csv has (7248, 2352)."
+          },
+          {
+            "description": "[G3_0220] micro coordinate mismatch: routing has (7200, 3552), micro_coordinate.csv has (7344, 2352)."
+          },
+          {
+            "description": "[G3_0221] micro coordinate mismatch: routing has (7296, 3552), micro_coordinate.csv has (7440, 2352)."
+          },
+          {
+            "description": "[G3_0222] micro coordinate mismatch: routing has (7344, 1248), micro_coordinate.csv has (7200, 2400)."
+          },
+          {
+            "description": "[G3_0223] micro coordinate mismatch: routing has (7296, 1296), micro_coordinate.csv has (7296, 2400)."
+          },
+          {
+            "description": "[G3_0224] micro coordinate mismatch: routing has (7392, 1296), micro_coordinate.csv has (7392, 2400)."
+          },
+          {
+            "description": "[G3_0225] micro coordinate mismatch: routing has (7344, 1344), micro_coordinate.csv has (7488, 2400)."
+          },
+          {
+            "description": "[G3_0226] micro coordinate mismatch: routing has (7296, 1392), micro_coordinate.csv has (7248, 2448)."
+          },
+          {
+            "description": "[G3_0227] micro coordinate mismatch: routing has (7392, 1392), micro_coordinate.csv has (7344, 2448)."
+          },
+          {
+            "description": "[G3_0228] micro coordinate mismatch: routing has (7344, 1440), micro_coordinate.csv has (7440, 2448)."
+          },
+          {
+            "description": "[G3_0229] micro coordinate mismatch: routing has (7296, 1488), micro_coordinate.csv has (7200, 2496)."
+          },
+          {
+            "description": "[G3_0230] micro coordinate mismatch: routing has (7392, 1488), micro_coordinate.csv has (7296, 2496)."
+          },
+          {
+            "description": "[G3_0231] micro coordinate mismatch: routing has (7344, 1536), micro_coordinate.csv has (7392, 2496)."
+          },
+          {
+            "description": "[G3_0232] micro coordinate mismatch: routing has (7296, 1584), micro_coordinate.csv has (7488, 2496)."
+          },
+          {
+            "description": "[G3_0233] micro coordinate mismatch: routing has (7392, 1584), micro_coordinate.csv has (7344, 1104)."
+          },
+          {
+            "description": "[G3_0234] micro coordinate mismatch: routing has (7344, 1632), micro_coordinate.csv has (7440, 1104)."
+          },
+          {
+            "description": "[G3_0235] micro coordinate mismatch: routing has (7296, 1680), micro_coordinate.csv has (7296, 1152)."
+          },
+          {
+            "description": "[G3_0236] micro coordinate mismatch: routing has (7392, 1680), micro_coordinate.csv has (7392, 1152)."
+          },
+          {
+            "description": "[G3_0237] micro coordinate mismatch: routing has (7344, 1728), micro_coordinate.csv has (7488, 1152)."
+          },
+          {
+            "description": "[G3_0238] micro coordinate mismatch: routing has (7296, 1776), micro_coordinate.csv has (7344, 1200)."
+          },
+          {
+            "description": "[G3_0239] micro coordinate mismatch: routing has (7392, 1776), micro_coordinate.csv has (7440, 1200)."
+          },
+          {
+            "description": "[G3_0240] micro coordinate mismatch: routing has (7776, 2112), micro_coordinate.csv has (7296, 1248)."
+          },
+          {
+            "description": "[G3_0241] micro coordinate mismatch: routing has (7872, 2112), micro_coordinate.csv has (7392, 1248)."
+          },
+          {
+            "description": "[G3_0242] micro coordinate mismatch: routing has (7824, 2160), micro_coordinate.csv has (7776, 3024)."
+          },
+          {
+            "description": "[G3_0243] micro coordinate mismatch: routing has (7776, 2208), micro_coordinate.csv has (7872, 3024)."
+          },
+          {
+            "description": "[G3_0244] micro coordinate mismatch: routing has (7872, 2208), micro_coordinate.csv has (7824, 3072)."
+          },
+          {
+            "description": "[G3_0245] micro coordinate mismatch: routing has (7824, 2256), micro_coordinate.csv has (7776, 3120)."
+          },
+          {
+            "description": "[G3_0246] micro coordinate mismatch: routing has (7776, 2304), micro_coordinate.csv has (7872, 3120)."
+          },
+          {
+            "description": "[G3_0247] micro coordinate mismatch: routing has (7872, 2304), micro_coordinate.csv has (7824, 3168)."
+          },
+          {
+            "description": "[G3_0248] micro coordinate mismatch: routing has (7824, 2352), micro_coordinate.csv has (7776, 3216)."
+          },
+          {
+            "description": "[G3_0249] micro coordinate mismatch: routing has (7776, 2400), micro_coordinate.csv has (7872, 3216)."
+          },
+          {
+            "description": "[G3_0250] micro coordinate mismatch: routing has (7872, 2400), micro_coordinate.csv has (7824, 3264)."
+          },
+          {
+            "description": "[G3_0251] micro coordinate mismatch: routing has (7824, 2448), micro_coordinate.csv has (7776, 3312)."
+          },
+          {
+            "description": "[G3_0252] micro coordinate mismatch: routing has (7776, 2496), micro_coordinate.csv has (7872, 3312)."
+          },
+          {
+            "description": "[G3_0253] micro coordinate mismatch: routing has (7872, 2496), micro_coordinate.csv has (7824, 3360)."
+          },
+          {
+            "description": "[G3_0254] micro coordinate mismatch: routing has (7824, 2544), micro_coordinate.csv has (7776, 3408)."
+          },
+          {
+            "description": "[G3_0255] micro coordinate mismatch: routing has (7776, 2592), micro_coordinate.csv has (7872, 3408)."
+          },
+          {
+            "description": "[G3_0256] micro coordinate mismatch: routing has (7872, 2592), micro_coordinate.csv has (7824, 3456)."
+          },
+          {
+            "description": "[G3_0257] micro coordinate mismatch: routing has (7824, 2640), micro_coordinate.csv has (7776, 3504)."
+          },
+          {
+            "description": "[G3_0258] micro coordinate mismatch: routing has (7776, 2688), micro_coordinate.csv has (7872, 3504)."
+          },
+          {
+            "description": "[G3_0259] micro coordinate mismatch: routing has (7872, 2688), micro_coordinate.csv has (7824, 3552)."
+          },
+          {
+            "description": "[G3_0260] micro coordinate mismatch: routing has (7824, 2736), micro_coordinate.csv has (7776, 1296)."
+          },
+          {
+            "description": "[G3_0261] micro coordinate mismatch: routing has (8160, 3216), micro_coordinate.csv has (7872, 1296)."
+          },
+          {
+            "description": "[G3_0262] micro coordinate mismatch: routing has (8256, 3216), micro_coordinate.csv has (7824, 1344)."
+          },
+          {
+            "description": "[G3_0263] micro coordinate mismatch: routing has (8352, 3216), micro_coordinate.csv has (7776, 1392)."
+          },
+          {
+            "description": "[G3_0264] micro coordinate mismatch: routing has (8448, 3216), micro_coordinate.csv has (7872, 1392)."
+          },
+          {
+            "description": "[G3_0265] micro coordinate mismatch: routing has (8208, 3264), micro_coordinate.csv has (7824, 1440)."
+          },
+          {
+            "description": "[G3_0266] micro coordinate mismatch: routing has (8304, 3264), micro_coordinate.csv has (7776, 1488)."
+          },
+          {
+            "description": "[G3_0267] micro coordinate mismatch: routing has (8400, 3264), micro_coordinate.csv has (7872, 1488)."
+          },
+          {
+            "description": "[G3_0268] micro coordinate mismatch: routing has (8160, 3312), micro_coordinate.csv has (7824, 1536)."
+          },
+          {
+            "description": "[G3_0269] micro coordinate mismatch: routing has (8256, 3312), micro_coordinate.csv has (7776, 1584)."
+          },
+          {
+            "description": "[G3_0270] micro coordinate mismatch: routing has (8352, 3312), micro_coordinate.csv has (7872, 1584)."
+          },
+          {
+            "description": "[G3_0271] micro coordinate mismatch: routing has (8448, 3312), micro_coordinate.csv has (7824, 1632)."
+          },
+          {
+            "description": "[G3_0272] micro coordinate mismatch: routing has (8208, 3360), micro_coordinate.csv has (8256, 3216)."
+          },
+          {
+            "description": "[G3_0273] micro coordinate mismatch: routing has (8304, 3360), micro_coordinate.csv has (8352, 3216)."
+          },
+          {
+            "description": "[G3_0274] micro coordinate mismatch: routing has (8400, 3360), micro_coordinate.csv has (8448, 3216)."
+          },
+          {
+            "description": "[G3_0275] micro coordinate mismatch: routing has (8160, 3408), micro_coordinate.csv has (8304, 3264)."
+          },
+          {
+            "description": "[G3_0276] micro coordinate mismatch: routing has (8256, 3408), micro_coordinate.csv has (8400, 3264)."
+          },
+          {
+            "description": "[G3_0277] micro coordinate mismatch: routing has (8352, 3408), micro_coordinate.csv has (8256, 3312)."
+          },
+          {
+            "description": "[G3_0278] micro coordinate mismatch: routing has (8448, 3408), micro_coordinate.csv has (8352, 3312)."
+          },
+          {
+            "description": "[G3_0279] micro coordinate mismatch: routing has (8208, 3456), micro_coordinate.csv has (8448, 3312)."
+          },
+          {
+            "description": "[G3_0280] micro coordinate mismatch: routing has (8304, 3456), micro_coordinate.csv has (8304, 3360)."
+          },
+          {
+            "description": "[G3_0281] micro coordinate mismatch: routing has (8304, 1488), micro_coordinate.csv has (8400, 3360)."
+          },
+          {
+            "description": "[G3_0282] micro coordinate mismatch: routing has (8400, 1488), micro_coordinate.csv has (8256, 3408)."
+          },
+          {
+            "description": "[G3_0283] micro coordinate mismatch: routing has (8256, 1536), micro_coordinate.csv has (8352, 3408)."
+          },
+          {
+            "description": "[G3_0284] micro coordinate mismatch: routing has (8352, 1536), micro_coordinate.csv has (8448, 3408)."
+          },
+          {
+            "description": "[G3_0285] micro coordinate mismatch: routing has (8448, 1536), micro_coordinate.csv has (8304, 3456)."
+          },
+          {
+            "description": "[G3_0286] micro coordinate mismatch: routing has (8304, 1584), micro_coordinate.csv has (8400, 3456)."
+          },
+          {
+            "description": "[G3_0287] micro coordinate mismatch: routing has (8400, 1584), micro_coordinate.csv has (8256, 3504)."
+          },
+          {
+            "description": "[G3_0288] micro coordinate mismatch: routing has (8256, 1632), micro_coordinate.csv has (8352, 3504)."
+          },
+          {
+            "description": "[G3_0289] micro coordinate mismatch: routing has (8352, 1632), micro_coordinate.csv has (8400, 1392)."
+          },
+          {
+            "description": "[G3_0290] micro coordinate mismatch: routing has (8448, 1632), micro_coordinate.csv has (8352, 1440)."
+          },
+          {
+            "description": "[G3_0291] micro coordinate mismatch: routing has (8304, 1680), micro_coordinate.csv has (8448, 1440)."
+          },
+          {
+            "description": "[G3_0292] micro coordinate mismatch: routing has (8400, 1680), micro_coordinate.csv has (8400, 1488)."
+          },
+          {
+            "description": "[G3_0293] micro coordinate mismatch: routing has (8256, 1728), micro_coordinate.csv has (8352, 1536)."
+          },
+          {
+            "description": "[G3_0294] micro coordinate mismatch: routing has (8352, 1728), micro_coordinate.csv has (8448, 1536)."
+          },
+          {
+            "description": "[G3_0295] micro coordinate mismatch: routing has (8448, 1728), micro_coordinate.csv has (8400, 1584)."
+          },
+          {
+            "description": "[G3_0296] micro coordinate mismatch: routing has (8304, 1776), micro_coordinate.csv has (8352, 1632)."
+          },
+          {
+            "description": "[G3_0297] micro coordinate mismatch: routing has (8400, 1776), micro_coordinate.csv has (8448, 1632)."
+          },
+          {
+            "description": "[G3_0298] micro coordinate mismatch: routing has (8256, 1824), micro_coordinate.csv has (8400, 1680)."
+          },
+          {
+            "description": "[G3_0299] micro coordinate mismatch: routing has (8352, 1824), micro_coordinate.csv has (8352, 1728)."
+          },
+          {
+            "description": "[G3_0300] micro coordinate mismatch: routing has (8448, 1824), micro_coordinate.csv has (8448, 1728)."
+          }
+        ]
+      }
+    }
+  },
+  "routing": {
+    "feasible": true,
+    "total_violations": 0,
+    "by_category": {}
+  }
+}

@@ -1,0 +1,91 @@
+# input_easy.yaml
+#
+# Configuration file for the micro placement generator (generator.py).
+# "Easy" difficulty tier: 1 signal group, small N, generous candidate density.
+# All coordinate and size values are in grid units unless noted otherwise.
+#
+# Usage:
+#   python generator.py -c input_easy.yaml
+
+schema_version: 1
+
+generator:
+  seed: 4               # random seed for reproducibility
+  g_x: 96               # g_x: minimum horizontal gap between micro bump clusters (¥ìm)
+  g_y: 192              # g_y: minimum vertical gap between micro bump clusters (¥ìm)
+
+# Optimization objectives passed through to the problem formulation.
+# Supported values: "routing_length (minimization)", "num_bends (minimization)"
+objectives:
+  - "routing_length (minimization)"
+  - "num_bends (minimization)"
+
+layout:                 # boundary of the full layout area (grid units), origin fixed at (0, 0)
+  L: 4                  # L: number of routing layers
+  W: 2500               # W: layout width
+  H: 5000               # H: layout height
+
+spec:                   # physical dimensions of components (grid units)
+  delta: 4              # ?: unit grid size (= wire width)
+  d_micro: 24           # d_micro: micro bump diameter
+  d_C4: 40              # d_C4: C4 bump diameter
+  d_via: 8              # d_via: via diameter
+
+  # sc_i: bump-to-bump center-to-center spacing (grid units)
+  sc:
+    micro: 48           # sc_micro: micro bump pitch (used as the placement grid pitch)
+    C4: 152             # sc_C4: C4 bump pitch (used for the candidate grid)
+
+  # sc_{via,i}: via-to-component center-to-center spacing (grid units)
+  # Formula: (d_via + d_i) / 2 + delta
+  sc_via:
+    micro: 20   # (8+24)/2 + 4
+    C4: 28      # (8+40)/2 + 4
+    via: 12     # (8+8)/2  + 4
+
+  # sc_{wire,i}: wire-to-component center-to-center spacing (grid units)
+  # Formula: d_i / 2 + (3/2) * delta
+  sc_wire:
+    micro: 18   # 24/2 + 6
+    C4: 26      # 40/2 + 6
+    via: 10     # 8/2  + 6
+    wire: 8     # 4/2  + 6
+
+# Number of nets per group (G1-G{K}).
+signal:
+  N: 100                  # N: total number of nets
+  K: 1                   # K: number of groups (easy tier)
+  G1: 100
+  # Cluster size triangular distribution bounds (as fractions of total N).
+  c_min: 0.05
+  c_max: 0.2
+
+placement:
+  q: 3                  # q: side length of the C4 bump density-check window (in C4 pitches)
+  p: 6                  # p: maximum number of C4 bumps allowed within any q¡¿q window
+  # phi: dummy bump density on the ML layer (fraction of non-micro-bump grid
+  # positions that get a dummy bump / obstacle). 1.0 = every empty position is
+  # a dummy bump (original behavior, max masking). 0.0 = no dummy bumps at all.
+  phi: 1.0
+
+routing:
+  # rho_L: maximum allowed fraction of total routing length on each layer.
+  # Constraint: layer_length / total_length <= rho. Set to null (~) for unconstrained
+  # (0.0 is now a real constraint meaning "this layer must carry ~0% of the length").
+  # Wired into placement: rho_M1 -> L1_max, rho_M3 -> L3_max (see placement/main.py).
+  # M2/M4 currently have no analogous cap in the placement code, so they remain
+  # validator-only checks.
+  rho:
+    M1: 0.2
+    M2: null
+    M3: null
+    M4: null
+
+  # sigma_k: allowed routing-length deviation per group (as a fraction of the mean).
+  # Wired into placement (skew_ratio_gN = 1 + sigma_gN) and routing (cri_dist1
+  # multiplier = 1 + sigma_gN). Set to null (~) for "no deviation constraint".
+  sigma:
+    G1: 0.3
+
+output:
+  dir: benchmark datasets/data/small/instance_small_4
