@@ -12,8 +12,8 @@ schema_version: 1
 
 generator: 
   seed: 1               # random seed for reproducibility
-  g_x: 96               # g_x: minimum horizontal gap between micro bump clusters (μm)
-  g_y: 192              # g_y: minimum vertical gap between micro bump clusters (μm)
+  g_x: 48               # g_x: minimum horizontal gap between micro bump clusters (μm)
+  g_y: 48              # g_y: minimum vertical gap between micro bump clusters (μm)
 
 # Optimization objectives passed through to the problem formulation.
 # Supported values: "routing_length (minimization)", "num_bends (minimization)"
