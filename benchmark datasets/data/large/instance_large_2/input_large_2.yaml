@@ -61,9 +61,9 @@ spec:                   # physical dimensions of components (grid units)
 signal:
   N: 902                  # N: total number of nets (172+682+5+41+2)
   K: 3                   # K: number of groups (high tier)
-  G1: 150
+  G1: 200
   G2: 602
-  G3: 150
+  G3: 100
   # Cluster size triangular distribution bounds (as fractions of total N).
   c_min: 0.025
   c_max: 0.05
@@ -74,7 +74,7 @@ placement:
   # phi: dummy bump density on the ML layer (fraction of non-micro-bump grid
   # positions that get a dummy bump / obstacle). 1.0 = every empty position is
   # a dummy bump (original behavior, max masking). 0.0 = no dummy bumps at all.
-  phi: 1.0
+  phi: 0.5
 
 routing:
   # rho_L: maximum allowed fraction of total routing length on each layer.
