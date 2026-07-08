@@ -330,9 +330,9 @@ Each cluster is placed inside a bounding box within a strip. Multiple clusters w
 
 ```
 zigzag_right_high          zigzag_left_high
-  row 0:  ●  ●  ●  ●        row 0:   ● ●  ●
-  row 1:   ● ●  ●            row 1:  ●  ●  ●  ●
-  row 2:  ●  ●  ●  ●        row 2:   ● ●  ●
+  row 0:  ●  ●  ●  ●        row 0:    ●  ●  ●
+  row 1:    ●  ●  ●          row 1:  ●  ●  ●  ●
+  row 2:  ●  ●  ●  ●        row 2:    ●  ●  ●
   ...                         ...
   (even rows: N cols,          (even rows: N−1 cols,
    odd rows:  N−1 cols)         odd rows:  N cols)
