@@ -28,7 +28,7 @@ Python 3.10 or later is recommended.
 ├── generator.py          # Benchmark instance generator
 ├── validator.py          # Placement + routing feasibility checker & metrics
 ├── visualizer.py         # Standalone routing visualizer
-├── input.yaml            # Shared configuration (generator, validator, visualizer all read this)
+├── input.yaml            # Example configuration (annotated reference; each instance has its own yaml)
 ├── requirements.txt
 ├── outputs/              # Default output directory (generated, not version-controlled)
 └── benchmark datasets/
@@ -115,15 +115,19 @@ Validates a routing output JSON file for placement and routing feasibility, comp
 python validator.py -r <routing_output.json>
 ```
 
-The validator **auto-derives** all other paths from the routing file's location:
+Additional options:
 
-| Derived path | Description |
+| Option | Description |
 |---|---|
-| `../input.yaml` | Configuration (one level above the output dir) |
-| `./C4_candidate.csv` | Package-bump candidate grid (same output dir) |
-| `./micro_coordinate.csv` | Micro-bump placement (same output dir) |
-| `./routing_metrics.csv` | Per-net metrics output (written here) |
-| `./summary.json` | All placement/routing violations, grouped by category (written here) |
+| `-c`, `--config` | Path to `input.yaml` (default: looks for `input_*.yaml` in routing dir, then `../input.yaml`) |
+| `-d`, `--data-dir` | Directory containing `micro_coordinate.csv` and `C4_candidate.csv` (default: same directory as routing JSON) |
+
+Output files are written alongside the routing JSON:
+
+| File | Description |
+|---|---|
+| `routing_metrics.csv` | Per-net routing metrics |
+| `summary.json` | All placement/routing violations, grouped by category |
 
 ### Routing JSON format
 
@@ -227,7 +231,7 @@ python visualizer.py -c input.yaml -r routing_output.json -o my_plots/
 
 ## Configuration (`input.yaml`)
 
-All three modules share the same `input.yaml`. Key parameters:
+Each benchmark instance has its own `input_*.yaml` inside its instance folder. The root [`input.yaml`](input.yaml) is an annotated reference example. Key parameters:
 
 ### `generator`
 
@@ -298,40 +302,23 @@ Full layout (width × height)
 
 ### Step 2 — Vertical partitioning
 
-The candidate grid is divided into `num_partitions` equal vertical strips. Each strip spans the full usable height.
+The candidate grid is divided into 4 equal vertical strips, each spanning the full usable height.
 
-### Step 3 — Group-to-partition allocation (`--spatial-mode`)
+### Step 3 — Group-to-partition allocation
 
-**`random` (default)**
 Groups are assigned to partitions probabilistically in descending size order:
 
 - The number of partitions a group occupies scales with its share of total signals (< 25% → 1 partition, 25–50% → 2, 50–75% → 3, ≥ 75% → 4).
 - A "coverage pass" first assigns each group to an unoccupied partition; once all partitions are covered, remaining groups are placed randomly.
 - When exactly 2 partitions are chosen, non-adjacent partitions (`|p1 − p2| > 1`) are preferred to maximise spatial separation.
 
-**`structured`**
-A fixed template that mirrors the spatial pattern found in real IC layouts:
-
-| Rank | Group | Partition assignment |
-|---|---|---|
-| 0 (largest, e.g. G2) | Background | All partitions — 60% to inner, 40% to outer |
-| 1 (2nd largest, e.g. G1) | Peripheral | Leftmost + rightmost partitions only (equal split) |
-| 2 (3rd largest, e.g. G3) | Inner | Inner partitions only |
-| 3+ (remaining) | Small | Spread evenly across all partitions |
-
-Together, ranks 0–2 produce an inverted-T spatial profile matching real bump maps.
-
 ### Step 4 — Cross-partition mixing
 
-After allocation, signals are partially exchanged between groups to create spatial overlap and avoid hard boundaries:
-
-- The top `mix_top_k` groups (by signal count) each bleed `mix_ratio` of their home-partition signals into the other top groups' home partitions.
-- **Any group that is the sole occupant of a partition is automatically added to the mixing pool**, regardless of `mix_top_k`. This prevents isolated regions where only one group appears.
-- The bleed amount is divided equally among destination partitions, and is clamped so the source keeps at least 1 signal and the destination does not exceed grid capacity.
+After allocation, signals from the two largest groups are partially exchanged to create spatial overlap and avoid hard boundaries. Any group that is the sole occupant of a partition is automatically included in the mixing pool.
 
 ### Step 5 — Sub-partition strips
 
-Each partition is sliced into narrow vertical strips of width `sub_width_pitch × pitch`, separated by minimum horizontal gaps of `g_x` μm. This spatially separates clusters of the same group within a partition.
+Each partition is sliced into narrow vertical strips separated by minimum horizontal gaps of `g_x` μm. This spatially separates clusters of the same group within a partition.
 
 ### Step 6 — Cluster size sampling
 
@@ -355,7 +342,7 @@ X spacing = 2 × pitch (every other grid column); Y spacing = 1 × pitch (every 
 
 ### Step 8 — Post-placement cluster shuffle
 
-After all clusters are placed, `cluster_shuffle_ratio` (default 20%) of all clusters are randomly selected and their coordinate sets are pairwise swapped. Only clusters of equal size are paired, so group signal counts are exactly preserved. This introduces spatial randomness without directional bias.
+After all clusters are placed, 20% of clusters are randomly selected and their coordinate sets are pairwise swapped. Only clusters of equal size are paired, so group signal counts are exactly preserved. This introduces spatial randomness without directional bias.
 
 ### Step 9 — Dummy bumps
 
