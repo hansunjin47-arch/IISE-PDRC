@@ -66,8 +66,8 @@ python generator.py -c input.yaml
 |---|---|---|
 | `--num-partitions` | `4` | Number of vertical partitions |
 | `--sub-width-pitch` | `8` | Sub-partition strip width in pitch units |
-| `--cluster-gap-x` | *(yaml)* | Minimum horizontal gap between clusters (μm) — overrides `generator.g_x` in yaml |
-| `--cluster-gap-y` | *(yaml)* | Minimum vertical gap between clusters (μm) — overrides `generator.g_y` in yaml |
+| `--g-x` | — | Minimum horizontal gap between clusters (μm) — overrides `generator.g_x` in yaml |
+| `--g-y` | — | Minimum vertical gap between clusters (μm) — overrides `generator.g_y` in yaml |
 | `--cluster-height-slack` | `1.15` | Height slack factor when estimating cluster bounding boxes |
 | `--mix-ratio` | `0.15` | Fraction of top-group signals that bleed into adjacent groups' partitions |
 | `--mix-top-k` | `2` | Number of largest groups to apply cross-partition mixing |
@@ -77,7 +77,7 @@ python generator.py -c input.yaml
 | `--no-plot` | — | Skip visualization |
 
 > **Note:** `g_x` and `g_y` are read from `input.yaml` (`generator.g_x` / `generator.g_y`) by default.
-> The CLI flags `--cluster-gap-x` / `--cluster-gap-y` override the yaml values when explicitly provided.
+> The CLI flags `--g-x` / `--g-y` override the yaml values when explicitly provided.
 
 Example:
 
@@ -88,7 +88,7 @@ python generator.py -c input.yaml --no-plot
 python generator.py -c input.yaml --spatial-mode structured --no-plot
 
 # Tighter vertical packing:
-python generator.py -c input.yaml --cluster-gap-y 0
+python generator.py -c input.yaml --g-y 0
 ```
 
 ### Output

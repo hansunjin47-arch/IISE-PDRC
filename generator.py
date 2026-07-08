@@ -1923,9 +1923,9 @@ def main():
                     help="number of vertical partitions (default: 4)")
     ap.add_argument("--sub-width-pitch", type=int, default=8,
                     help="strip width in pitch units (default: 8)")
-    ap.add_argument("--cluster-gap-x", type=int, default=None,
+    ap.add_argument("--g-x", type=int, default=None,
                     help="minimum horizontal gap between clusters in μm (overrides yaml generator.g_x)")
-    ap.add_argument("--cluster-gap-y", type=int, default=None,
+    ap.add_argument("--g-y", type=int, default=None,
                     help="minimum vertical gap between clusters in μm (overrides yaml generator.g_y)")
     ap.add_argument("--cluster-height-slack", type=float, default=1.15,
                     help="height slack used when stacking clusters in strips (default: 1.05)")
@@ -1955,8 +1955,8 @@ def main():
     # g_x / g_y are in sc.micro units (= micro-bump pitch = 48 grid units each).
     # 1 step = 1 × sc.micro grid units of gap between adjacent cluster boundaries.
     _pitch = int(cfg.spec.sc["micro"])  # 48 grid units per step
-    _gx_um = args.cluster_gap_x if args.cluster_gap_x is not None else cfg.generator.g_x
-    _gy_um = args.cluster_gap_y if args.cluster_gap_y is not None else cfg.generator.g_y
+    _gx_um = args.g_x if args.g_x is not None else cfg.generator.g_x
+    _gy_um = args.g_y if args.g_y is not None else cfg.generator.g_y
 
     # Validate: cluster_gap must be non-negative.
     if _gx_um < 0:
