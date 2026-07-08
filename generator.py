@@ -1919,27 +1919,8 @@ def main():
     )
     ap.add_argument("-c", "--config", required=True, help="YAML config path (e.g., input.yaml)")
     ap.add_argument("--no-plot", action="store_true")
-    ap.add_argument("--num-partitions", type=int, default=4,
-                    help="number of vertical partitions (default: 4)")
-    ap.add_argument("--sub-width-pitch", type=int, default=8,
-                    help="strip width in pitch units (default: 8)")
-    ap.add_argument("--g-x", type=int, default=None,
-                    help="minimum horizontal gap between clusters in μm (overrides yaml generator.g_x)")
-    ap.add_argument("--g-y", type=int, default=None,
-                    help="minimum vertical gap between clusters in μm (overrides yaml generator.g_y)")
-    ap.add_argument("--cluster-height-slack", type=float, default=1.15,
-                    help="height slack used when stacking clusters in strips (default: 1.05)")
     ap.add_argument("--num-instances", type=int, default=1,
                     help="number of instances to generate with consecutive seeds (default: 1)")
-    ap.add_argument("--mix-ratio", type=float, default=0.15,
-                    help="fraction of top-group home signals that bleed into other top groups' partitions (0=off, default: 0.15)")
-    ap.add_argument("--mix-top-k", type=int, default=2,
-                    help="number of largest groups to apply cross-partition mixing (default: 2)")
-    ap.add_argument("--cluster-shuffle-ratio", type=float, default=0.20,
-                    help="fraction of all clusters to randomly shuffle post-placement (default: 0.20)")
-    ap.add_argument("--spatial-mode", choices=["random", "structured"], default="random",
-                    help="partition allocation strategy: 'random' (probabilistic, default) or "
-                         "'structured' (T-shape: largest=center, 2nd=periphery, 3rd=inner)")
 
     args = ap.parse_args()
 
@@ -1955,8 +1936,8 @@ def main():
     # g_x / g_y are in sc.micro units (= micro-bump pitch = 48 grid units each).
     # 1 step = 1 × sc.micro grid units of gap between adjacent cluster boundaries.
     _pitch = int(cfg.spec.sc["micro"])  # 48 grid units per step
-    _gx_um = args.g_x if args.g_x is not None else cfg.generator.g_x
-    _gy_um = args.g_y if args.g_y is not None else cfg.generator.g_y
+    _gx_um = cfg.generator.g_x
+    _gy_um = cfg.generator.g_y
 
     # Validate: cluster_gap must be non-negative.
     if _gx_um < 0:
@@ -1969,15 +1950,15 @@ def main():
     _gy_steps = math.ceil(_gy_um / _pitch) if _gy_um > 0 else 0
 
     placement_kwargs = dict(
-        num_partitions=int(args.num_partitions),
-        sub_partition_width_in_pitch=int(args.sub_width_pitch),
+        num_partitions=4,
+        sub_partition_width_in_pitch=8,
         cluster_gap_x_pitch=_gx_steps,
         cluster_gap_y_rows=_gy_steps,
-        cluster_height_slack=float(args.cluster_height_slack),
-        mix_ratio=float(args.mix_ratio),
-        mix_top_k=int(args.mix_top_k),
-        cluster_shuffle_ratio=float(args.cluster_shuffle_ratio),
-        spatial_mode=args.spatial_mode,
+        cluster_height_slack=1.15,
+        mix_ratio=0.15,
+        mix_top_k=2,
+        cluster_shuffle_ratio=0.20,
+        spatial_mode="random",
     )
 
     for i in range(num_instances):
@@ -1987,7 +1968,7 @@ def main():
         print(f"\n{'='*52}")
         if batch:
             print(f"[Instance {i+1}/{num_instances}]  seed={seed}  -> {out_dir}")
-        print(f"[Config] partitions={args.num_partitions}, gap_x={_gx_um}μm ({_gx_steps} pitch steps), gap_y={_gy_um}μm ({_gy_steps} pitch steps)")
+        print(f"[Config] partitions=4, gap_x={_gx_um}μm ({_gx_steps} pitch steps), gap_y={_gy_um}μm ({_gy_steps} pitch steps)")
         print(f"[ClusterShape] max_point_cols={MAX_CLUSTER_POINT_COLS}, point_step={POINT_STEP}")
         print("[PatternProb] zigzag_right_high=0.50, zigzag_left_high=0.50")
 

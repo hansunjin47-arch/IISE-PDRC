@@ -64,31 +64,16 @@ python generator.py -c input.yaml
 
 | Argument | Default | Description |
 |---|---|---|
-| `--num-partitions` | `4` | Number of vertical partitions |
-| `--sub-width-pitch` | `8` | Sub-partition strip width in pitch units |
-| `--g-x` | — | Minimum horizontal gap between clusters (μm) — overrides `generator.g_x` in yaml |
-| `--g-y` | — | Minimum vertical gap between clusters (μm) — overrides `generator.g_y` in yaml |
-| `--cluster-height-slack` | `1.15` | Height slack factor when estimating cluster bounding boxes |
-| `--mix-ratio` | `0.15` | Fraction of top-group signals that bleed into adjacent groups' partitions |
-| `--mix-top-k` | `2` | Number of largest groups to apply cross-partition mixing |
-| `--cluster-shuffle-ratio` | `0.20` | Fraction of all clusters randomly shuffled post-placement |
-| `--spatial-mode` | `random` | Partition allocation strategy: `random` or `structured` (see below) |
 | `--num-instances` | `1` | Number of instances to generate with consecutive seeds |
 | `--no-plot` | — | Skip visualization |
 
-> **Note:** `g_x` and `g_y` are read from `input.yaml` (`generator.g_x` / `generator.g_y`) by default.
-> The CLI flags `--g-x` / `--g-y` override the yaml values when explicitly provided.
+All generator tuning parameters (`g_x`, `g_y`, etc.) are configured via `input.yaml`.
 
 Example:
 
 ```bash
 python generator.py -c input.yaml --no-plot
-
-# Structured T-shape layout (matches real IC spatial patterns):
-python generator.py -c input.yaml --spatial-mode structured --no-plot
-
-# Tighter vertical packing:
-python generator.py -c input.yaml --g-y 0
+python generator.py -c input.yaml --num-instances 5
 ```
 
 ### Output
