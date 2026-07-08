@@ -45,7 +45,8 @@ Python 3.10 or later is recommended.
         ├── medium/
         │   └── instance_medium_{1..5}/
         └── large/
-            └── instance_large_{1..3}/   # FEASIBLE results only
+            ├── instance_large_{1..3}/   # FEASIBLE results only
+            └── results_summary.md
 ```
 
 ---
@@ -112,7 +113,7 @@ Validates a routing output JSON file for placement and routing feasibility, comp
 ### Usage
 
 ```bash
-python validator.py -r <routing_output.json>
+python validator.py -r "<routing_output.json>"
 ```
 
 Additional options:
@@ -207,8 +208,8 @@ Standalone visualization for routing output JSON. Produces the same three plot t
 ### Usage
 
 ```bash
-python visualizer.py -c input.yaml -r routing_output.json
-python visualizer.py -c input.yaml -r routing_output.json -o my_plots/
+python visualizer.py -c input.yaml -r "routing_output.json"
+python visualizer.py -c input.yaml -r "routing_output.json" -o my_plots/
 ```
 
 ### Arguments
