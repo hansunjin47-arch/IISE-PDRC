@@ -96,7 +96,7 @@ Instances are organized into three size tiers (N ≈ 100 / 556 / 902), each with
 
 The routing results in `benchmark datasets/results/` were produced by the two-stage placement-and-routing algorithm from:
 
-> Y. Kim, S. Han, B.I. Kim, D.G. Choi, H. Kim, J. Kim, **"A two-stage placement and routing framework for HBM interposer design"**, *Submitted*.
+> [Authors omitted for blind review], **"A two-stage placement and routing framework for HBM interposer design"**, *Submitted*.
 
 These results are provided as a reference baseline — users developing their own optimization methods should treat the `input_*.yaml` configs as the actual benchmark problems to solve.
 
