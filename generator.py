@@ -371,7 +371,7 @@ def build_clusters_range_sample(N: int, min_size: int, max_size: int, *, bias: f
                 sizes.append(remaining)
             break
 
-        # 삼각분포로 샘플링 후 [min_size, upper] 범위로 클램핑
+        # sample from triangular distribution then clamp to [min_size, upper]
         clamped_mode = max(float(min_size), min(float(upper), mode))
         k = int(round(random.triangular(min_size, upper, clamped_mode)))
         k = max(min_size, min(upper, k))
@@ -406,7 +406,7 @@ def pattern_zigzag_right_high(xs: List[int], ys: List[int], k: int) -> List[Tupl
     step = xs[1] - xs[0]
     half = step // 2
 
-    # bounding box 안쪽에만 들어가는 shifted row
+    # shifted row that fits entirely inside the bounding box
     shifted = [x + half for x in xs[:-1]]
 
     for j, y in enumerate(ys):
@@ -434,7 +434,7 @@ def pattern_zigzag_left_high(xs: List[int], ys: List[int], k: int) -> List[Tuple
     step = xs[1] - xs[0]
     half = step // 2
 
-    # bounding box 안쪽에만 들어가는 shifted row
+    # shifted row that fits entirely inside the bounding box
     shifted = [x + half for x in xs[:-1]]
 
     for j, y in enumerate(ys):
@@ -1597,9 +1597,10 @@ def place_micros_grouped(
     phi = cfg.placement.phi
 
     empty_positions = [(x, y) for y in ys_full for x in xs_full if (x, y) not in placed_positions]
-    # phi: 1.0 = 빈 자리를 전부 채움(기존 동작), 0.0 = 전혀 채우지 않음(마스킹 없음).
-    # 자리마다 확률적으로 채우는 게 아니라, 빈 자리 중 정확히 phi*N개를 무작위로 뽑아서 채운다
-    # (확률 샘플링은 매 실행마다 실제 채워지는 개수가 들썩여서 난이도 비교가 흔들리기 때문).
+    # phi: 1.0 = fill all empty slots (original behavior), 0.0 = fill none (no masking).
+    # Rather than sampling each slot probabilistically, exactly round(phi*N) empty slots are
+    # chosen at random (probabilistic sampling causes the filled count to fluctuate each run,
+    # which makes difficulty comparisons unreliable).
     num_to_fill = min(len(empty_positions), round(len(empty_positions) * phi))
     filled_positions = set(random.sample(empty_positions, num_to_fill))
 
@@ -1727,43 +1728,42 @@ def plot_all(
         linewidth=1.2, edgecolor="black", facecolor="none", zorder=5,
     ))
 
+    r_micro = cfg.spec.d_micro / 2  # radius in μm
+
     # ── Layer 2: dummy bumps — faint grid context ────────────────────────
     if dummy_bumps:
-        dx = [b["micro_x"] for b in dummy_bumps]
-        dy = [b["micro_y"] for b in dummy_bumps]
-        ax.scatter(
-            dx, dy,
-            s=4, c="#aaaaaa", alpha=0.45,
-            linewidths=0, edgecolors="none",
-            zorder=1, rasterized=True,
-        )
+        for b in dummy_bumps:
+            ax.add_patch(mpatches.Circle(
+                (b["micro_x"], b["micro_y"]), r_micro,
+                facecolor="#aaaaaa", alpha=0.35, zorder=1,
+            ))
 
-    # ── Layer 3: signal bumps — same marker size as dummy bumps ──────────
+    # ── Layer 3: signal bumps ─────────────────────────────────────────────
     for g in all_groups:
         grp_bumps = [b for b in real_bumps if b["group"] == g]
-        gx = [b["micro_x"] for b in grp_bumps]
-        gy = [b["micro_y"] for b in grp_bumps]
-        ax.scatter(
-            gx, gy,
-            s=4,
-            c=group2color[g],
-            alpha=1.0,
-            linewidths=0,
-            edgecolors="none",
-            zorder=3,
-            label=f"{g}  (n={len(grp_bumps):,})",
-        )
+        first = True
+        for b in grp_bumps:
+            ax.add_patch(mpatches.Circle(
+                (b["micro_x"], b["micro_y"]), r_micro,
+                facecolor=group2color[g], alpha=1.0,
+                linewidth=0.8, edgecolor="black",
+                zorder=3, label=f"{g}  (n={len(grp_bumps):,})" if first else None,
+            ))
+            first = False
 
     # ── Axes ──────────────────────────────────────────────────────────────
-    ax.set_xlim(lx0 - 100, lx1 + 100)
-    ax.set_ylim(ly0 - 100, ly1 + 100)
+    layout_range = max(lx1 - lx0, ly1 - ly0)
+    pad = max(cfg.spec.d_micro, layout_range * 0.05)
+    ax.set_xlim(lx0 - pad, lx1 + pad)
+    ax.set_ylim(ly0 - pad, ly1 + pad)
     ax.set_aspect("equal", adjustable="box")
 
-    ax.set_xlabel("X coordinate (grid units)", fontsize=13)
-    ax.set_ylabel("Y coordinate (grid units)", fontsize=13)
+    ax.set_xlabel("X coordinate (μm)", fontsize=13)
+    ax.set_ylabel("Y coordinate (μm)", fontsize=13)
     ax.tick_params(axis="both", labelsize=11)
-    ax.xaxis.set_major_locator(mticker.MultipleLocator(1000))
-    ax.yaxis.set_major_locator(mticker.MultipleLocator(1000))
+    tick_step = max(1, round(layout_range / 5 / 50) * 50)
+    ax.xaxis.set_major_locator(mticker.MultipleLocator(tick_step))
+    ax.yaxis.set_major_locator(mticker.MultipleLocator(tick_step))
 
     # light grid for spatial reference
     ax.grid(True, linestyle=":", linewidth=0.4, color="#cccccc", zorder=0)
@@ -1821,17 +1821,22 @@ def plot_C4_candidates(
             x += pitch
         y -= pitch
 
+    import matplotlib.patches as mpatches
+    layout_range = max(x_max - x_min, y_max - y_min)
     fig, ax = plt.subplots(figsize=(10, 10))
 
-    ax.scatter(
-        cand_xs, cand_ys,
-        s=20, c="#4a90d9", alpha=0.7,
-        linewidths=0, edgecolors="none",
-        zorder=1,
-    )
+    r_c4 = float(cfg.spec.d_C4) / 2  # radius in μm
+    for (cx, cy) in zip(cand_xs, cand_ys):
+        ax.add_patch(mpatches.Circle(
+            (cx, cy), r_c4,
+            facecolor="#4a90d9", alpha=0.7,
+            linewidth=0.8, edgecolor="#1a5fa8",
+            zorder=1,
+        ))
 
-    ax.set_xlim(x_min, x_max)
-    ax.set_ylim(y_min, y_max)
+    pad = max(r_c4 * 1.5, layout_range * 0.05)
+    ax.set_xlim(x_min - pad, x_max + pad)
+    ax.set_ylim(y_min - pad, y_max + pad)
     ax.set_aspect("equal", adjustable="box")
     ax.set_xlabel("X-coordinate", fontsize=13)
     ax.set_ylabel("Y-coordinate", fontsize=13)

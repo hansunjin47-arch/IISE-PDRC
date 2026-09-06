@@ -1233,7 +1233,7 @@ def plot_per_layer(nets: List[RoutedNet], num_layers: int, out_dir: str, base: s
             xs    = [p[0] for p in pts]
             ys    = [p[1] for p in pts]
             ax.plot(xs, ys, color=color, linewidth=0.8, alpha=0.7)
-            # bump/via 끝점에만 마커 찍기 (중간 꺾이는 점은 와이어 형태일 뿐, 실제 컴포넌트가 아님)
+            # place markers only at bump/via endpoints (intermediate turn points are just wire, not components)
             ax.scatter([xs[0], xs[-1]], [ys[0], ys[-1]], color=color, s=8, zorder=3)
         plt.tight_layout()
         _save_fig(fig, os.path.join(out_dir, f'{base}_layer{layer_idx + 1}.png'),
@@ -1304,7 +1304,7 @@ def plot_projection(nets: List[RoutedNet], num_layers: int, out_path: str) -> No
             xs  = [p[0] for p in pts]
             ys  = [p[1] for p in pts]
             ax.plot(xs, ys, color=color, linewidth=0.6, alpha=0.6)
-            # bump/via 끝점에만 마커 찍기 (중간 꺾이는 점은 와이어 형태일 뿐, 실제 컴포넌트가 아님)
+            # place markers only at bump/via endpoints (intermediate turn points are just wire, not components)
             ax.scatter([xs[0], xs[-1]], [ys[0], ys[-1]], color=color, s=4, zorder=3)
     legend_handles = [
         mpatches.Patch(color=_layer_color(i), label=f'layer{i + 1}')
