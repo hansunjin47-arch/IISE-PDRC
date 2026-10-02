@@ -36,14 +36,14 @@ Python 3.10 or later is recommended.
 ├── outputs/              # Default output directory (generated, not version-controlled)
 └── benchmark datasets/
     ├── data/             # Problem definitions (input configs + generated layouts)
-    │   ├── toy/          # N = 1 (pipeline smoke-test)
+    │   ├── toy/          # N = 2, seed = 35 (paper's S1 smoke-test; optimal = 149.4423)
     │   │   └── instance_toy_1/          # input_toy_1.yaml + micro_coordinate + C4_candidate
     │   ├── small/        # N ≈ 100
     │   │   └── instance_small_{1..5}/   # input_small_N.yaml + micro_coordinate + C4_candidate
     │   ├── medium/       # N ≈ 556
     │   │   └── instance_medium_{1..5}/
     │   └── large/        # N ≈ 902
-    │       └── instance_large_{1..5}/   # 1-3: solvable · 4-5: intentionally unsolvable
+    │       └── instance_large_{1..5}/   # 1-3: solvable · 4-5: no feasible solution found within the given constraints
     └── results/          # Algorithm outputs (routing solutions + metrics)
         ├── toy/
         │   └── instance_toy_1/          # routing_result.json
@@ -99,7 +99,7 @@ All files are written to the directory specified by `output.dir` in the config (
 
 ## Benchmark Instances & Results
 
-Instances are organized into three size tiers (N ≈ 100 / 556 / 902), each with 5 instances varying in group count K, layout shape W×H, dummy bump density φ, cluster size distribution, and routing constraints (σ, ρ). Large instances 4–5 are intentionally unsolvable under the given constraints and serve as negative-case benchmarks.
+Instances are organized into three size tiers (N ≈ 100 / 556 / 902), each with 5 instances varying in group count K, layout shape W×H, dummy bump density φ, cluster size distribution, and routing constraints (σ, ρ). Large instances 4–5 have no feasible solution under the given constraints and serve as negative-case benchmarks.
 
 The routing results in `benchmark datasets/results/` were produced by the two-stage placement-and-routing algorithm from:
 
@@ -193,7 +193,7 @@ Rules:
 | micro match | Every net in `micro_coordinate.csv` appears in routing output with matching coordinates, and vice versa |
 | Layout bounds | All components (micro, via, C4) lie within `[0, width] × [0, height]` |
 | Bump candidate | Every C4 bump must be located on a predefined candidate grid point |
-| Minimum spacing | Component-to-component center-to-center distance checks (micro↔via, via↔via, C4↔C4, etc.) |
+| Minimum spacing | Component-to-component center-to-center distance checks (micro↔via, via↔via, C4↔C4, etc.); dummy micro bumps and unselected C4 candidates are included as spacing obstacles |
 | Window density | Number of C4 bumps within any `q × q` area must not exceed `placement.p` |
 
 **Routing feasibility:**
@@ -207,7 +207,7 @@ Rules:
 | Octagonal routing | All segments must be horizontal, vertical, or 45° diagonal |
 | Self-crossing | No wire may cross itself on the same layer (same net) |
 | Routing spacing | Wire-to-micro, wire-to-via, wire-to-C4, and wire-to-wire center-to-center distance checks (grid-based occupancy check; dummy bumps also counted as obstacles) |
-| Layer usage ratio | Per-layer routing length fraction ≤ `routing.rho` (0.0 = unconstrained) |
+| Layer usage ratio | Per-layer routing length fraction ≤ `routing.rho` (`null` = unconstrained) |
 | Group deviation | Within each group, `(max_length − min_length) / min_length ≤ routing.sigma` |
 
 **Routing metrics** (saved to `routing_metrics.csv`):

@@ -1,7 +1,7 @@
 # input_toy_1.yaml
 #
 # Configuration file for the micro placement generator (generator.py).
-# Toy instance: N=1 net, minimal layout, for pipeline smoke-testing.
+# Toy instance: N=2 nets, seed=35 (paper's S1 smoke-test instance).
 # All coordinate and size values are in micrometers (um) unless noted otherwise.
 #
 # Usage:
@@ -10,7 +10,7 @@
 schema_version: 1
 
 generator:
-  seed: 1               # random seed for reproducibility
+  seed: 35              # random seed for reproducibility
   g_x: 48               # g_x: minimum horizontal gap between micro bump clusters (um)
   g_y: 48               # g_y: minimum vertical gap between micro bump clusters (um)
 
@@ -34,19 +34,19 @@ spec:                   # physical dimensions of components (um)
   d_C4: 40              # d_C4: C4 bump diameter
   d_via: 8              # d_via: via diameter
 
-  # sc_i: bump-to-bump center-to-center spacing (grid units)
+  # sc_i: bump-to-bump center-to-center spacing (um)
   sc:
     micro: 48           # sc_micro: micro bump pitch (used as the placement grid pitch)
     C4: 152             # sc_C4: C4 bump pitch (used for the candidate grid)
 
-  # sc_{via,i}: via-to-component center-to-center spacing (grid units)
+  # sc_{via,i}: via-to-component center-to-center spacing (um)
   # Formula: (d_via + d_i) / 2 + delta
   sc_via:
     micro: 20   # (8+24)/2 + 4
     C4: 28      # (8+40)/2 + 4
     via: 12     # (8+8)/2  + 4
 
-  # sc_{wire,i}: wire-to-component center-to-center spacing (grid units)
+  # sc_{wire,i}: wire-to-component center-to-center spacing (um)
   # Formula: d_i / 2 + (3/2) * delta
   sc_wire:
     micro: 18   # 24/2 + 6
@@ -56,18 +56,18 @@ spec:                   # physical dimensions of components (um)
 
 # Number of nets per group (G1-G{K}).
 signal:
-  N: 1                  # N: total number of nets
+  N: 2                  # N: total number of nets
   K: 1                  # K: number of groups
-  G1: 1
+  G1: 2
   # Cluster size triangular distribution bounds (as fractions of total N).
-  c_min: 1.0
-  c_max: 1.0
+  c_min: 0.1
+  c_max: 0.9
 
 placement:
   q: 3                  # q: side length of the C4 bump density-check window (in C4 pitches)
   p: 6                  # p: maximum number of C4 bumps allowed within any qxq window
   # phi: dummy bump density on the ML layer.
-  phi: 0.0              # no dummy bumps for simplicity
+  phi: 1.0              # fully fill empty ML positions with dummy bumps
 
 routing:
   # Constraint: layer_length / total_length <= rho. Set to null (~) for unconstrained.

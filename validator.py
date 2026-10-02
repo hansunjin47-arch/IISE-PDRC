@@ -273,9 +273,9 @@ class Component:
     netname: str
     label: str               # e.g. 'micro(G1_0001)', 'via12(G1_0001)'
     layers: FrozenSet[int]   # physical layer(s) this component occupies
-    #   micro  → {1}
+    #   micro  → {num_layers}  (top layer)
     #   via_N,N+1 → {N, N+1}  (footprint spans both adjacent layers)
-    #   C4 → {num_layers}
+    #   C4 → {1}  (bottom layer)
 
 
 def extract_components(nets: List[RoutedNet], cfg: ValidatorCfg) -> List[Component]:
@@ -472,7 +472,7 @@ def check_placement_feasibility(
             sc_via_micro = cfg.spacing.get('sc_via_micro', 0.0)
             micro_grid = _PointGrid(dummy_micro_pts, sc_via_micro)
             for c in components:
-                if c.kind != 'via':
+                if c.kind != 'via' or cfg.L not in c.layers:
                     continue
                 for (px, py) in micro_grid.within(c.x, c.y, sc_via_micro):
                     dist = math.hypot(c.x - px, c.y - py)
@@ -492,7 +492,7 @@ def check_placement_feasibility(
             sc_via_C4 = cfg.spacing.get('sc_via_C4', 0.0)
             C4_grid = _PointGrid(dummy_C4_pts, sc_via_C4)
             for c in components:
-                if c.kind != 'via':
+                if c.kind != 'via' or 1 not in c.layers:
                     continue
                 for (px, py) in C4_grid.within(c.x, c.y, sc_via_C4):
                     dist = math.hypot(c.x - px, c.y - py)
@@ -866,8 +866,9 @@ def check_routing_feasibility(
                         ))
 
     # ── Check 6: Layer usage ratio ─────────────────────────────────────────
-    # For each layer with a non-zero ratio constraint, the layer's total routing
-    # length must not exceed ratio × total_routing_length.
+    # For each layer with a non-null ratio constraint (rho != null), the layer's
+    # total routing length must not exceed ratio × total_routing_length.
+    # rho = null means unconstrained; rho = 0.0 means that layer must carry zero length.
     if cfg.rho:
         # Accumulate routing length per layer across all nets.
         layer_lengths: Dict[str, float] = {}

@@ -1,4 +1,4 @@
-# input.yaml
+﻿# input.yaml
 #
 # Configuration file for the micro placement generator (generator.py).
 # All coordinate and size values are in micrometers (um) unless noted otherwise.
@@ -33,19 +33,19 @@ spec:                   # physical dimensions of components (um)
   d_C4: 40              # d_C4: C4 bump diameter
   d_via: 8              # d_via: via diameter
 
-  # sc_i: bump-to-bump center-to-center spacing (grid units)
+  # sc_i: bump-to-bump center-to-center spacing (um)
   sc:
     micro: 48           # sc_micro: micro bump pitch (used as the placement grid pitch)
     C4: 152             # sc_C4: C4 bump pitch (used for the candidate grid)
 
-  # sc_{via,i}: via-to-component center-to-center spacing (grid units)
+  # sc_{via,i}: via-to-component center-to-center spacing (um)
   # Formula: (d_via + d_i) / 2 + delta
   sc_via:
     micro: 20   # (8+24)/2 + 4
     C4: 28      # (8+40)/2 + 4
     via: 12     # (8+8)/2  + 4
 
-  # sc_{wire,i}: wire-to-component center-to-center spacing (grid units)
+  # sc_{wire,i}: wire-to-component center-to-center spacing (um)
   # Formula: d_i / 2 + (3/2) * delta
   sc_wire:
     micro: 18   # 24/2 + 6

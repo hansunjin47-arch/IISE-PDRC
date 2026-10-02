@@ -1,4 +1,4 @@
-# input.yaml
+﻿# input.yaml
 
 #
 
@@ -53,7 +53,7 @@ spec:                   # physical dimensions of components (um)
 
   d_via: 8              # d_via: via diameter
 
-  # sc_i: bump-to-bump center-to-center spacing (grid units)
+  # sc_i: bump-to-bump center-to-center spacing (um)
 
   sc:
 
@@ -61,7 +61,7 @@ spec:                   # physical dimensions of components (um)
 
     C4: 152             # sc_C4: C4 bump pitch (used for the candidate grid)
 
-  # sc_{via,i}: via-to-component center-to-center spacing (grid units)
+  # sc_{via,i}: via-to-component center-to-center spacing (um)
 
   # Formula: (d_via + d_i) / 2 + delta
 
@@ -73,7 +73,7 @@ spec:                   # physical dimensions of components (um)
 
     via: 12     # (8+8)/2  + 4
 
-  # sc_{wire,i}: wire-to-component center-to-center spacing (grid units)
+  # sc_{wire,i}: wire-to-component center-to-center spacing (um)
 
   # Formula: d_i / 2 + (3/2) * delta
 

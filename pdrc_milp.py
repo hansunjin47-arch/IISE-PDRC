@@ -1,5 +1,5 @@
 """
-MILP implementation of supplementary_formulation_revised.tex.
+MILP implementation of the arc-flow routing formulation from the paper's supplement.
 
 C4 candidates on the M1 layer are selected as sources; fixed micro bumps
 on the ML layer are sinks. Grid edges between layers point upward.
@@ -27,7 +27,7 @@ import math
 import os
 from collections import defaultdict
 from dataclasses import dataclass
-from typing import Dict, List, Tuple
+from typing import Dict, List, Optional, Tuple
 
 import yaml
 
@@ -226,7 +226,7 @@ class Geometry:
 # MILP
 # --------------------------------------------------------------------------- #
 class PDRCModel:
-    def __init__(self, inst: Instance, eta: float = 1.0,
+    def __init__(self, inst: Instance, eta: Optional[float] = None,
                  spacing_mode: str = "pairwise"):
         """Build the supplement's explicit linear constraints.
 
@@ -235,10 +235,11 @@ class PDRCModel:
         """
         if spacing_mode != "pairwise":
             raise ValueError("Only the supplementary linear formulation is supported.")
-        if not math.isfinite(eta) or eta <= 0:
+        resolved_eta = eta if eta is not None else inst.eta
+        if not math.isfinite(resolved_eta) or resolved_eta <= 0:
             raise ValueError("eta must be finite and positive.")
         self.inst = inst
-        self.eta = eta
+        self.eta = resolved_eta
         self.spacing_mode = spacing_mode
         self.geo = Geometry(inst)
         self.model: gp.Model | None = None
