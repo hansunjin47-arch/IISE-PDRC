@@ -1,4 +1,4 @@
-﻿# input.yaml
+# input.yaml
 #
 # Configuration file for the micro placement generator (generator.py).
 # All coordinate and size values are in micrometers (um) unless noted otherwise.

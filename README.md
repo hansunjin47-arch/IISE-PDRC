@@ -99,7 +99,7 @@ All files are written to the directory specified by `output.dir` in the config (
 
 ## Benchmark Instances & Results
 
-Instances are organized into three size tiers (N ≈ 100 / 556 / 902), each with 5 instances varying in group count K, layout shape W×H, dummy bump density φ, cluster size distribution, and routing constraints (σ, ρ). Large instances 4–5 have no feasible solution under the given constraints and serve as negative-case benchmarks.
+Instances are organized into three size tiers (N ≈ 100 / 556 / 902), each with 5 instances varying in group count K, layout shape W×H, dummy bump density φ, cluster size distribution, and routing constraints (σ, ρ). For large instances 4–5, no feasible solution was found under the given constraints; they serve as challenge cases.
 
 The routing results in `benchmark datasets/results/` were produced by the two-stage placement-and-routing algorithm from:
 

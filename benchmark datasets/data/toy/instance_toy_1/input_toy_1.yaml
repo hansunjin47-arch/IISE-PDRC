@@ -73,15 +73,15 @@ routing:
   # Constraint: layer_length / total_length <= rho. Set to null (~) for unconstrained.
   # (0.0 is a real constraint that allows no routing length on the layer).
   rho:
-    M1: null
+    M1: 0.40
     M2: null
-    M3: null
+    M3: 0.20
     M4: null
 
   # sigma_k: maximum routing-length skew per group, (max - min) / min <= sigma_k.
   # Set to null (~) for no skew constraint.
   sigma:
-    G1: null
+    G1: 0.05
 
 output:
   dir: benchmark datasets/data/toy/instance_toy_1
