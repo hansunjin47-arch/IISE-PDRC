@@ -1,6 +1,12 @@
 {
   "feasible": true,
   "total_violations": 0,
+  "metrics": {
+    "total_routing_length": 414091.0989,
+    "total_bends": 2348,
+    "objective": 414237.8489,
+    "eta": 0.0625
+  },
   "placement": {
     "feasible": true,
     "total_violations": 0,
