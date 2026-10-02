@@ -10,7 +10,7 @@
 schema_version: 1
 
 generator:
-  seed: 35              # random seed for reproducibility
+  seed: 42              # random seed for reproducibility
   g_x: 48               # g_x: minimum horizontal gap between micro bump clusters (um)
   g_y: 48               # g_y: minimum vertical gap between micro bump clusters (um)
 
