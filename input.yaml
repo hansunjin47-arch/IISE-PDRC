@@ -1,7 +1,7 @@
 # input.yaml
 #
 # Configuration file for the micro placement generator (generator.py).
-# All coordinate and size values are in grid units unless noted otherwise.
+# All coordinate and size values are in micrometers (um) unless noted otherwise.
 #
 # Usage:
 #   python generator.py -c input.yaml
@@ -18,13 +18,16 @@ generator:
 objectives:
   - "routing_length (minimization)"
   - "num_bends (minimization)"
+# eta: penalty weight for the bend count in the objective
+# objective = total routing length (um) + eta * total bend count
+eta: 0.0625  # 2^-4
 
-layout:                 # boundary of the full layout area (grid units), origin fixed at (0, 0)
+layout:                 # boundary of the full layout area (um), origin fixed at (0, 0)
   L: 4                  # L: number of routing layers
   W: 5000               # W: layout width
   H: 5000               # H: layout height
 
-spec:                   # physical dimensions of components (grid units)
+spec:                   # physical dimensions of components (um)
   delta: 4              # Δ: unit grid size (= wire width)
   d_micro: 24           # d_micro: micro bump diameter
   d_C4: 40              # d_C4: C4 bump diameter
@@ -66,15 +69,16 @@ placement:
   p: 6                  # p: maximum number of C4 bumps allowed within any q×q window
 
 routing:
-  # rho_L: maximum allowed fraction of total routing length on each layer.
-  # Constraint: layer_length / total_length <= rho. Set to 0.0 for unconstrained.
+  # Constraint: layer_length / total_length <= rho. Set to null (~) for unconstrained.
+  # (0.0 is a real constraint that allows no routing length on the layer).
   rho:
-    M1: 0.0
-    M2: 0.0
-    M3: 0.0
+    M1: null
+    M2: null
+    M3: null
     M4: 0.25
 
-  # sigma_k: allowed routing-length deviation per group (as a fraction of the mean).
+  # sigma_k: maximum routing-length skew per group, (max - min) / min <= sigma_k.
+  # Set to null (~) for no skew constraint.
   sigma:
     G1: 0.05
     G2: 0.1

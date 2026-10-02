@@ -240,7 +240,7 @@ def main() -> None:
     cfg  = load_config(args.config)
     nets = load_routing_json(args.routing)
 
-    num_layers = int(cfg['layout']['num_layer'])
+    num_layers = int(cfg['layout'].get('num_layer', cfg['layout'].get('L')))
 
     outdir = args.outdir or os.path.dirname(os.path.abspath(args.routing))
     os.makedirs(outdir, exist_ok=True)

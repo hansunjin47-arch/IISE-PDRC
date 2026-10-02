@@ -1,3 +1,4 @@
 pyyaml
 matplotlib
 numpy
+# gurobipy is installed via Gurobi's own installer; see gurobi.com for details

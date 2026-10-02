@@ -6,6 +6,7 @@ The suite consists of three independent modules:
 | Module | Script | Purpose |
 |---|---|---|
 | **Generator** | `generator.py` | Produce synthetic micro-bump placement instances |
+| **Solver** | `pdrc_milp.py` | MILP-based routing solver (requires Gurobi) |
 | **Validator** | `validator.py` | Check routing output for placement & routing feasibility |
 | **Visualizer** | `visualizer.py` | Standalone routing visualization (per-layer / 3D / projection) |
 
@@ -16,6 +17,8 @@ The suite consists of three independent modules:
 ```bash
 pip install pyyaml matplotlib numpy
 ```
+
+For the MILP solver (`pdrc_milp.py`), Gurobi 10.0 or later is required and must be installed separately (see [gurobi.com](https://www.gurobi.com/)).
 
 Python 3.10 or later is recommended.
 
@@ -33,6 +36,8 @@ Python 3.10 or later is recommended.
 ├── outputs/              # Default output directory (generated, not version-controlled)
 └── benchmark datasets/
     ├── data/             # Problem definitions (input configs + generated layouts)
+    │   ├── toy/          # N = 1 (pipeline smoke-test)
+    │   │   └── instance_toy_1/          # input_toy_1.yaml + micro_coordinate + C4_candidate
     │   ├── small/        # N ≈ 100
     │   │   └── instance_small_{1..5}/   # input_small_N.yaml + micro_coordinate + C4_candidate
     │   ├── medium/       # N ≈ 556
@@ -40,6 +45,8 @@ Python 3.10 or later is recommended.
     │   └── large/        # N ≈ 902
     │       └── instance_large_{1..5}/   # 1-3: solvable · 4-5: intentionally unsolvable
     └── results/          # Algorithm outputs (routing solutions + metrics)
+        ├── toy/
+        │   └── instance_toy_1/          # routing_result.json
         ├── small/
         │   └── instance_small_{1..5}/   # summary.json + routing_result.json + plots + metrics
         ├── medium/
@@ -106,7 +113,31 @@ Full results are available in [results_summary.md](benchmark%20datasets/results/
 
 ---
 
-## 2. Validator (`validator.py`)
+## 2. Solver (`pdrc_milp.py`)
+
+Solves the routing problem as a mixed-integer linear program using Gurobi. Implements the arc-flow formulation from the paper's supplement.
+
+### Usage
+
+```bash
+python pdrc_milp.py -c input.yaml -d <data-dir>
+```
+
+Key arguments:
+
+| Argument | Default | Description |
+|---|---|---|
+| `--eta` | from YAML | Bend-count penalty weight (overrides `eta` in `input.yaml`) |
+| `--time-limit` | `3600` | Gurobi time limit in seconds |
+| `--gap` | `0.01` | Gurobi MIP optimality gap tolerance |
+| `--log-file` | `<data-dir>/gurobi.log` | Gurobi log path |
+| `--warm-start` | — | Inject a constructive router solution as a MIP start (requires `pdrc_router`) |
+
+Output is written to `<data-dir>/routing_result.json`.
+
+---
+
+## 3. Validator (`validator.py`)
 
 Validates a routing output JSON file for placement and routing feasibility, computes routing metrics, and saves visualization plots.
 
@@ -128,7 +159,7 @@ Output files are written alongside the routing JSON:
 | File | Description |
 |---|---|
 | `routing_metrics.csv` | Per-net routing metrics |
-| `summary.json` | All placement/routing violations, grouped by category |
+| `summary.json` | Feasibility summary: all placement/routing violations grouped by category, plus aggregate routing metrics (`total_routing_length`, `total_bends`, `objective`, `eta`) |
 
 ### Routing JSON format
 
@@ -276,12 +307,19 @@ Each benchmark instance has its own `input_*.yaml` inside its instance folder. T
 | `p`, `q` | $p, q$: at most $p$ C4 bumps in any $q \times q$ density-checking window of the C4 bump candidate grid |
 | `phi` | $\phi$: fraction of residual ML-layer grid positions (not occupied by signal micro bumps) filled with dummy bumps as routing obstacles (`1.0` = fully filled; `0.0` = none) |
 
+### `objectives` / `eta`
+
+| Parameter | Description |
+|---|---|
+| `objectives` | List of objectives: `"routing_length (minimization)"` and/or `"num_bends (minimization)"` |
+| `eta` | $\eta$: bend-count penalty weight; objective = total routing length + $\eta \times$ total bends (default `0.0625` = $2^{-4}$) |
+
 ### `routing`
 
 | Parameter | Description |
 |---|---|
-| `rho` | $\rho_l$: maximum ratio of routing length assigned to layer $l$ ($l = 1, \ldots, L$) |
-| `sigma` | $\sigma_k$: routing-length skew for group $k$ |
+| `rho` | $\rho_l$: maximum ratio of routing length assigned to layer $l$ ($l = 1, \ldots, L$); `null` = unconstrained |
+| `sigma` | $\sigma_k$: maximum routing-length skew for group $k$: $(max - min) / min \le \sigma_k$; `null` = unconstrained |
 
 See [`input.yaml`](input.yaml) for a fully annotated example.
 

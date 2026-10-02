@@ -19,7 +19,7 @@ import json
 import math
 import os
 from dataclasses import dataclass, field
-from typing import Any, Dict, FrozenSet, List, Optional, Tuple
+from typing import Any, Dict, FrozenSet, Iterable, List, Optional, Tuple
 
 import numpy as np
 import yaml
@@ -63,6 +63,7 @@ class ValidatorCfg:
     total_signals: int           # total net count = sum of all group sizes
     # sigma_k: per-group routing length deviation limit: (max - min) / min <= limit.
     sigma: Dict[str, Optional[float]]      # key: 'G1', 'G2', ...
+    eta: float                             # bend-count penalty weight in the objective
 
 
 def load_validator_cfg(yaml_path: str) -> ValidatorCfg:
@@ -138,6 +139,7 @@ def load_validator_cfg(yaml_path: str) -> ValidatorCfg:
         K             = K,
         total_signals = sum(int(sig[f'G{i}']) for i in range(1, K + 1)),
         sigma         = sigma,
+        eta           = float(raw.get('eta', 0.0625)),
     )
 
 
@@ -330,6 +332,29 @@ def _dist(ci: Component, cj: Component) -> float:
     return math.sqrt((ci.x - cj.x) ** 2 + (ci.y - cj.y) ** 2)
 
 
+class _PointGrid:
+    """Spatial hash-grid for fast radius queries on a set of 2-D points."""
+    def __init__(self, points: Iterable[Tuple[int, int]], cell_size: float):
+        self._cell = max(cell_size, 1.0)
+        self._grid: Dict[Tuple[int, int], List[Tuple[int, int]]] = {}
+        for p in points:
+            key = (int(p[0] // self._cell), int(p[1] // self._cell))
+            self._grid.setdefault(key, []).append(p)
+
+    def within(self, cx: float, cy: float, r: float) -> List[Tuple[int, int]]:
+        """Return all stored points within distance r of (cx, cy)."""
+        span = int(r / self._cell) + 1
+        kx = int(cx // self._cell)
+        ky = int(cy // self._cell)
+        result: List[Tuple[int, int]] = []
+        for dx in range(-span, span + 1):
+            for dy in range(-span, span + 1):
+                for p in self._grid.get((kx + dx, ky + dy), []):
+                    if math.hypot(p[0] - cx, p[1] - cy) <= r:
+                        result.append(p)
+        return result
+
+
 def check_placement_feasibility(
     components: List[Component],
     cfg: ValidatorCfg,
@@ -435,6 +460,50 @@ def check_placement_feasibility(
                     ))
 
     C4_pts = [(c.x, c.y) for c in components if c.kind == 'C4']
+
+    # ── Check 2b: via clearance vs. dummy micro bumps and unselected C4s ──
+    # Dummy micros in micro_map are physical obstacles not present in `components`;
+    # similarly, unselected C4 candidates are physical bumps not in the routing output.
+    # Vias must still respect the same center-to-center spacing rules against them.
+    if micro_map is not None:
+        dummy_micro_pts = [(x, y) for name, (x, y) in micro_map.items()
+                           if name.startswith('dummy_')]
+        if dummy_micro_pts:
+            sc_via_micro = cfg.spacing.get('sc_via_micro', 0.0)
+            micro_grid = _PointGrid(dummy_micro_pts, sc_via_micro)
+            for c in components:
+                if c.kind != 'via':
+                    continue
+                for (px, py) in micro_grid.within(c.x, c.y, sc_via_micro):
+                    dist = math.hypot(c.x - px, c.y - py)
+                    if dist < sc_via_micro - 1e-9:
+                        violations.append(Violation(
+                            category='spacing',
+                            description=(
+                                f"{c.label} ↔ dummy_micro@({px},{py}) [sc_via_micro]: "
+                                f"center_dist={dist:.2f} < min={sc_via_micro:.2f}"
+                            )
+                        ))
+
+    if candidates:
+        selected_C4_set = {(int(c.x), int(c.y)) for c in components if c.kind == 'C4'}
+        dummy_C4_pts = [(x, y) for (x, y) in candidates if (x, y) not in selected_C4_set]
+        if dummy_C4_pts:
+            sc_via_C4 = cfg.spacing.get('sc_via_C4', 0.0)
+            C4_grid = _PointGrid(dummy_C4_pts, sc_via_C4)
+            for c in components:
+                if c.kind != 'via':
+                    continue
+                for (px, py) in C4_grid.within(c.x, c.y, sc_via_C4):
+                    dist = math.hypot(c.x - px, c.y - py)
+                    if dist < sc_via_C4 - 1e-9:
+                        violations.append(Violation(
+                            category='spacing',
+                            description=(
+                                f"{c.label} ↔ dummy_C4@({px},{py}) [sc_via_C4]: "
+                                f"center_dist={dist:.2f} < min={sc_via_C4:.2f}"
+                            )
+                        ))
 
     # ── Check 2: C4 candidate validation ───────────────────────────────
     candidate_set = set(candidates)
@@ -599,9 +668,16 @@ def _proper_intersect(
 def check_routing_feasibility(
     nets: List[RoutedNet],
     cfg: ValidatorCfg,
+    micro_map: Optional[Dict[str, Tuple[int, int]]] = None,
+    candidates: Optional[List[Tuple[int, int]]] = None,
 ) -> List[Violation]:
     """
-    Three routing feasibility checks applied to every net:
+    Routing feasibility checks applied to every net.
+    Connection points are center-based: m1[0] = C4 center, mL[-1] = micro center.
+
+    0. Endpoint verification (center-based)
+       m1[0] must be a declared C4 candidate position.
+       mL[-1] must equal the declared micro center for the net (from micro_coordinate.csv).
 
     1. Connectivity
        The route must be unbroken from C4 (m1[0]) to micro (mL[-1]).
@@ -621,8 +697,39 @@ def check_routing_feasibility(
     violations: List[Violation] = []
     pitch = cfg.delta
 
+    candidate_set = set(candidates) if candidates else None
+
     for net in nets:
         lns = net.layer_names()
+
+        # ── Check 0: Center-based endpoint verification ────────────────────
+        c4_pt = (int(net.C4[0]), int(net.C4[1]))
+        if candidate_set is not None and c4_pt not in candidate_set:
+            violations.append(Violation(
+                category='connectivity',
+                description=(
+                    f"[{net.netname}] C4 endpoint {c4_pt} is not a declared "
+                    f"candidate position (center-based check)."
+                )
+            ))
+        if micro_map is not None:
+            declared = micro_map.get(net.netname)
+            actual = (int(net.micro[0]), int(net.micro[1]))
+            if declared is None:
+                violations.append(Violation(
+                    category='connectivity',
+                    description=(
+                        f"[{net.netname}] Net not found in micro_coordinate.csv."
+                    )
+                ))
+            elif actual != declared:
+                violations.append(Violation(
+                    category='connectivity',
+                    description=(
+                        f"[{net.netname}] Micro endpoint {actual} does not match "
+                        f"declared center {declared} (center-based check)."
+                    )
+                ))
 
         # ── Check 1: Connectivity ──────────────────────────────────────────
         for i, ln in enumerate(lns[:-1]):
@@ -1394,6 +1501,8 @@ def save_summary_json(
     placement_violations: List[Violation],
     routing_violations:   List[Violation],
     out_path: str,
+    metrics: Optional[List[Any]] = None,
+    eta: Optional[float] = None,
 ) -> None:
     """
     Save all constraint violations to a single JSON file.
@@ -1403,6 +1512,12 @@ def save_summary_json(
     {
       "feasible": bool,
       "total_violations": int,
+      "metrics": {                          # present when metrics is provided
+        "total_routing_length": float,
+        "total_bends": int,
+        "objective": float,
+        "eta": float
+      },
       "placement": {
         "feasible": bool,
         "total_violations": int,
@@ -1438,6 +1553,20 @@ def save_summary_json(
     doc: Dict[str, Any] = {
         "feasible":         placement_ok and routing_ok,
         "total_violations": total,
+    }
+
+    if metrics is not None:
+        total_length = sum(m.routing_length for m in metrics)
+        total_bends  = sum(m.bend_count     for m in metrics)
+        _eta = eta if eta is not None else 0.0
+        doc["metrics"] = {
+            "total_routing_length": round(total_length, 4),
+            "total_bends":          total_bends,
+            "objective":            round(total_length + _eta * total_bends, 4),
+            "eta":                  _eta,
+        }
+
+    doc.update({
         "placement": {
             "feasible":         placement_ok,
             "total_violations": len(placement_violations),
@@ -1448,7 +1577,7 @@ def save_summary_json(
             "total_violations": len(routing_violations),
             "by_category":      _group(routing_violations),
         },
-    }
+    })
 
     with open(out_path, 'w', encoding='utf-8') as f:
         json.dump(doc, f, indent=2, ensure_ascii=False)
@@ -1539,7 +1668,8 @@ def main() -> None:
     save_metrics_csv(metrics, metrics_csv)
 
     # ── Routing feasibility (including spacing and group deviation) ───────
-    routing_violations   = check_routing_feasibility(nets, cfg)
+    routing_violations   = check_routing_feasibility(
+        nets, cfg, micro_map=micro_map, candidates=candidates)
     all_micro_positions = list(micro_map.values())
     spacing_violations   = check_routing_spacing(
         nets, components, cfg,
@@ -1551,7 +1681,8 @@ def main() -> None:
     routing_ok = print_routing_report(all_routing_violations)
 
     # ── Save summary JSON ─────────────────────────────────────────────────
-    save_summary_json(placement_violations, all_routing_violations, summary_json)
+    save_summary_json(placement_violations, all_routing_violations, summary_json,
+                      metrics=metrics, eta=cfg.eta)
 
     # ── Visualization ─────────────────────────────────────────────────────
     base = os.path.splitext(os.path.basename(args.routing))[0]
