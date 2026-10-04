@@ -29,7 +29,7 @@ layout:                 # boundary of the full layout area (um), origin fixed at
   H: 10000               # H: layout height
 
 spec:                   # physical dimensions of components (um)
-# delta: unit grid size
+  delta: 4              # delta: unit grid size (= wire width)
   d_micro: 24           # d_micro: micro bump diameter
   d_C4: 40              # d_C4: C4 bump diameter
   d_via: 8              # d_via: via diameter
