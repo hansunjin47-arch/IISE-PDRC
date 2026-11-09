@@ -139,7 +139,7 @@ def load_validator_cfg(yaml_path: str) -> ValidatorCfg:
         K             = K,
         total_signals = sum(int(sig[f'G{i}']) for i in range(1, K + 1)),
         sigma         = sigma,
-        eta           = float(raw.get('eta', 0.0625)),
+        eta           = float(raw.get('eta', 25.0)),
     )
 
 

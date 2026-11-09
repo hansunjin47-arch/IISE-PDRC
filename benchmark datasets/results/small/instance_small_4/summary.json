@@ -4,8 +4,8 @@
   "metrics": {
     "total_routing_length": 68411.7056,
     "total_bends": 395,
-    "objective": 68436.3931,
-    "eta": 0.0625
+    "objective": 78286.7056,
+    "eta": 25.0
   },
   "placement": {
     "feasible": true,

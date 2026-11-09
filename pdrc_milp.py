@@ -3,7 +3,8 @@ MILP implementation of the arc-flow routing formulation from the paper's supplem
 
 C4 candidates on the M1 layer are selected as sources; fixed micro bumps
 on the ML layer are sinks. Grid edges between layers point upward.
-The flow/depot structure is retained without subtour-elimination constraints.
+Directed cycles are prevented by lifted MTZ constraints on same-layer edges;
+since vias only go upward, every directed cycle lies within one layer.
 No diagonal self-crossing constraints are added, matching the supplement.
 Disconnected selected edges are reported separately in export diagnostics.
 
@@ -76,7 +77,7 @@ class Instance:
     micro_of: Dict[str, XY]                  # net -> micro grid index
     all_micro: List[XY]                      # all micros incl. dummies (obstacles)
     candidates: List[XY]                     # C4 candidate grid indices
-    eta: float = 2 ** -4                     # bend-count penalty weight (default 0.0625)
+    eta: float = 25.0                        # bend-count penalty weight (default 25)
     config_path: str = ""                    # source configuration for run provenance
 
     @property
@@ -130,7 +131,7 @@ def load_instance(yaml_path: str, data_dir: str) -> Instance:
                for k, v in rout.get("sigma", {}).items()},
         q=float(plc["q"]), p=int(plc["p"]),
         nets=sorted(nets), micro_of=micro_of, all_micro=all_micro, candidates=cands,
-        eta=float(raw.get("eta", 2 ** -4)),
+        eta=float(raw.get("eta", 25.0)),
         config_path=os.path.abspath(yaml_path),
     )
 
@@ -392,9 +393,20 @@ class PDRCModel:
         # ---- Spacing rules ---- #
         self._add_spacing(m, b, y, z)
 
+        # ---- Directed cycles within each layer (eq:mtz, eq:pi) ---- #
+        # omega_nh >= omega_nj + 1 - |V_l| (1 - x_njh) + (|V_l| - 2) x_nhj,
+        # 0 <= omega_nj <= |V_l| - 1; the last term also rules out two-node cycles.
+        n_layer = len(geo.cells)                                    # |V_l|
+        omega = {(n, (i, j, l)): m.addVar(lb=0.0, ub=n_layer - 1, name=f"omega.{n}.{tag((i, j, l))}")
+                 for n in nets for l in range(L) for (i, j) in geo.cells}
+        for n in nets:
+            for (p, q) in geo.planar:
+                m.addConstr(omega[n, q] >= omega[n, p] + 1 - n_layer * (1 - x[n, p, q])
+                            + (n_layer - 2) * x[n, q, p], name=f"mtz.{n}.{tag(p)}.{tag(q)}")
+
         m.update()
         self.model = m
-        self.vars = dict(b=b, x=x, y=y, z=z, u=u, c=c, ll=ll, r1=r1, r2=r2)
+        self.vars = dict(b=b, x=x, y=y, z=z, u=u, c=c, ll=ll, r1=r1, r2=r2, omega=omega)
         return m
 
     # ------------------------------------------------------------------ #
@@ -649,8 +661,11 @@ def start_values(mdl: "PDRCModel", paths) -> Dict[str, float]:
         v[f"b.{n}.{tag(c4)}"] = 1.0
         v[f"x.{n}.{tag(DEPOT)}.{tag(seq[0])}"] = 1.0
         v[f"x.{n}.{tag(seq[-1])}.{tag(DEPOT)}"] = 1.0
+        pos = defaultdict(int)                   # visiting order within each layer
         for a in seq:
             v[f"y.{n}.{tag(a)}"] = 1.0
+            v[f"omega.{n}.{tag(a)}"] = float(pos[a[2]])
+            pos[a[2]] += 1
         lens = {l: 0.0 for l in range(inst.L)}
         arcs = list(zip(seq, seq[1:]))
         for p, q in arcs:

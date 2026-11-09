@@ -21,7 +21,7 @@ objectives:
   - "num_bends (minimization)"
 # eta: penalty weight for the bend count in the objective
 # objective = total routing length (um) + eta * total bend count
-eta: 0.0625  # 2^-4
+eta: 25
 
 layout:                 # boundary of the full layout area (um), origin fixed at (0, 0)
   L: 4                  # L: number of routing layers

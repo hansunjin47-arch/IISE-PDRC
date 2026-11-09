@@ -36,7 +36,7 @@ Python 3.10 or later is recommended.
 ├── outputs/              # Default output directory (generated, not version-controlled)
 └── benchmark datasets/
     ├── data/             # Problem definitions (input configs + generated layouts)
-    │   ├── toy/          # N = 2, seed = 42 (paper's S1 smoke-test; optimal = 149.4423)
+    │   ├── toy/          # N = 2, seed = 42 (paper's S1 smoke-test; optimal = 152.1665)
     │   │   └── instance_toy_1/          # input_toy_1.yaml + micro_coordinate + C4_candidate
     │   ├── small/        # N ≈ 100
     │   │   └── instance_small_{1..5}/   # input_small_N.yaml + micro_coordinate + C4_candidate
@@ -312,7 +312,7 @@ Each benchmark instance has its own `input_*.yaml` inside its instance folder. T
 | Parameter | Description |
 |---|---|
 | `objectives` | List of objectives: `"routing_length (minimization)"` and/or `"num_bends (minimization)"` |
-| `eta` | $\eta$: bend-count penalty weight; objective = total routing length + $\eta \times$ total bends (default `0.0625` = $2^{-4}$) |
+| `eta` | $\eta$: bend-count penalty weight; objective = total routing length + $\eta \times$ total bends (default `25`) |
 
 ### `routing`
 
